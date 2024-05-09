@@ -51,7 +51,7 @@ public class ImageProduct implements UploadImageService{
 	}
 
 	public Path getPath(String filename) {
-		return Paths.get(UPLOADS_FOLDER).resolve(filename).toAbsolutePath();
+		return Paths.get("src", "main", "resources", "static", UPLOADS_FOLDER).resolve(filename).toAbsolutePath();
 	}
 
 }
