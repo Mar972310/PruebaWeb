@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<<head>
+    <meta charset="UTF-8">
+    <title>productos</title>
+    <link rel="stylesheet" href="/style/styleListProducts.css">
+</head>
+<body>
+
+    <h1>Listado de productos</h1>
+    <body>
+        <div class="exit">
+            <header>
+                <div class="left-column">
+                    <img src="/images/cerrar-sesion.png">
+                </div>
+                <div class="right-column">
+                    <img src="/images/LogoApp.jpeg">
+                </div>
+            </header>
+        </div>
+        <div class="products">
+            <div class="grid-container">
+                <div th:each="product: ${products}"  class="registro">
+                    <div class="hola">
+                        <div class="img_product">
+                            <img  th:src="${product.image}">
+                        </div>
+                        <div class="textInformation">
+                            <p th:text="${product.name}"></p>                          
+                            <div class="information">
+                                <div class="information_text">
+                                    <h4>Desde</h4>
+                                    <div class="new-price" th:if="${product.discount > 0}">
+                                        <span>$</span><span th:text="${product.price - (product.price * product.discount / 100)}"></span>
+                                    </div>
+                                    <div class="current-price" th:unless="${product.discount > 0}">
+                                        <span>$</span><span th:text="${product.price}"></span>
+                                    </div>
+                                    <div class="old-price" th:if="${product.discount > 0}">
+                                        <s><span>$</span><span th:text="${product.price}"></span></s>
+                                    </div>
+                                    <div class="old-price" th:if="${product.discount < 1}">
+                                        <p></p>
+                                    </div>
+                                </div>
+                                <div class="acciones" name="${product.productId}">
+                                    <button class="img_button "  th:attr="onclick='window.location.href=\'/api/products/update/' + ${product.productId} + '\''" type="button" method="get">
+                                        <img src="/images/boligrafo.png">
+                                    </button>
+                                    <button class="img_button " th:attr="onclick='window.location.href=\'/api/products/delete/' + ${product.productId} + '\''" type="button" method="get">
+                                        <img src="/images/eliminar.png">
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

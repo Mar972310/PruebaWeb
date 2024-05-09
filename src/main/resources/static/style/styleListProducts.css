@@ -1,0 +1,168 @@
+/* Estilos base */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Jost', sans-serif;
+    flex-direction: column;
+    background: #0D131A; 
+}
+
+body h1{
+    color: white;
+    margin-top: 10%; 
+}
+header {
+    display: grid;
+    grid-template-columns: 40% 60%; 
+    background: #000;;
+    color: #fff;
+    width: 100%; 
+    position: fixed; 
+    top: 0; 
+    z-index: 1000; 
+    align-items: center;
+}
+
+.left-column, .right-column {
+    padding: -2px; 
+}
+
+.exit {
+    margin-right: auto; 
+}
+
+.left-column img{
+    max-width: 10%; 
+    height: auto; 
+    margin-left: 5%; /* Desplazamiento hacia la izquierda */
+}
+.right-column img{
+    max-width: 40%;
+    height: auto; 
+}
+
+.registro {
+    background-color: #ffffff7d; /* Color de fondo de la cuadrícula */
+    border-radius: 15px;
+    padding: 5px;
+}
+
+
+.products {
+    display: flex; 
+    /*flex-wrap: wrap; /* Permite que los elementos se envuelvan */
+    justify-content: center; 
+    gap: 20px; 
+    padding: 20px;
+    max-width: 70%; /* Establecer un ancho máximo para el contenedor */
+    margin-top: 10px; 
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 50%)); /* Máximo de 5 columnas por fila */
+    gap: 20px; /* Aumentar el espacio entre los contenedores */
+    padding: 20px; /* Añadir espacio alrededor de la grilla */
+    border-radius: 15px; /* Redondear los bordes de la cuadrícula */
+    background-color: #ffffff00; /* Color de fondo de la cuadrícula */
+}
+
+.img_product {
+    text-align: center;
+    background-color: #E3E6EC; /* Color de fondo de la imagen */
+    padding: 10px; /* Añadir espacio alrededor de la imagen */
+    border-radius: 15px;
+    max-width: 100%; /* Hacer que la imagen ocupe todo el ancho */
+    height: auto; /* Ajustar la altura automáticamente */
+    margin-bottom: 10px; /* Eliminar el margen inferior */
+}
+
+.img_product img {
+    max-width: 100%;
+    height: auto;
+}
+
+.textInformation {
+    text-align: left;
+    background-color: transparent; /* Color de fondo del texto */
+    padding: 10px; /* Añadir espacio alrededor del texto */
+    color:#0D131A;
+    border-radius: 15px;
+    margin-top: 0px; 
+}
+
+.acciones{
+    display: flex; /* Hace que el contenedor sea un contenedor flex */
+    justify-content: center; /* Centra horizontalmente el contenido */
+    align-items: center; 
+    flex-direction: row;
+    gap:5px;
+}
+.information{
+    display: flex; /* Hace que el contenedor sea un contenedor flex */
+    justify-content:flex-start; /* Centra horizontalmente el contenido */
+    align-items:end; 
+    flex-direction: row;
+    gap:15%;
+    padding: 0px;
+}
+
+.information_text {
+    display: flex; /* Hace que el contenedor sea un contenedor flex */
+    justify-content: flex-start; /* Alinea el contenido al inicio horizontalmente */
+    align-items: center; /* Centra verticalmente el contenido */
+    flex-direction: column; /* Coloca los elementos uno debajo del otro */
+    width: 35%;
+}
+
+.new-price,
+.current-price,
+.old-price {
+    margin: 0;
+    display: flex; /* Hace que el contenedor sea un contenedor flex */
+    justify-content: flex-start; /* Alinea el contenido al inicio horizontalmente */
+    align-items: center; 
+}
+.information_text h4 {
+    margin-bottom: 3px; /* Elimina el margen inferior del elemento h4 */
+}
+
+.textInformation p{
+    margin-bottom: 3%;
+}
+
+.product-name {
+    font-size: 20px; /* Tamaño de la fuente deseado */
+    font-weight: bold; /* Opcional: Puedes hacer el nombre en negrita si lo deseas */
+}
+.old-price{
+    color: #0d131ab1;
+}
+
+.img_button {
+    border-radius:50%; 
+    overflow: hidden; 
+    background-color: transparent;
+    border: none; 
+    padding: 0; 
+    cursor: pointer; 
+
+    width: 45px; 
+    height:45px;  
+}
+
+.img_button img {
+    display: block; /* Asegura que la imagen se muestre como un bloque */
+    width: 100%; /* Ajusta el ancho de la imagen al tamaño del botón */
+    height: auto; /* Ajusta automáticamente la altura de la imagen */
+}
+
+/* Media queries para hacer el diseño responsive */
+@media screen and (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: repeat(2, minmax(0, 50%)); /* Cambiar a dos columnas en pantallas pequeñas */
+    }
+}

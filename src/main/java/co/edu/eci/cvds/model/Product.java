@@ -23,7 +23,7 @@ public class Product implements Serializable {
     @Column(name = "IMAGE")
     private String image;
     @Column(name = "PRICE")
-    private String price;
+    private double price;
     @Column(name = "COIN")
     private String coin;
     @Column(name = "DISCOUNT")
@@ -41,7 +41,7 @@ public class Product implements Serializable {
     public Product() {
     }
 
-    public Product(String name, String description, String technicalDescription, String image, String price, String coin, int discount, int tax, Category category, Quote quote) {
+    public Product(String name, String description, String technicalDescription, String image, int price, String coin, int discount, int tax, Category category, Quote quote) {
         this.productId = UUID.randomUUID().toString();
         this.name = name;
         this.description = description;
@@ -97,11 +97,11 @@ public class Product implements Serializable {
         this.image = image;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
