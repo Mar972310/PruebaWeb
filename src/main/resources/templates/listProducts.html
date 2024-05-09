@@ -12,7 +12,7 @@
         <div class="exit">
             <header>
                 <div class="left-column">
-                    <img src="/images/cerrar-sesion.png">
+                    <img src="/images/cerrar-sesion.png" onclick="volver()">
                 </div>
                 <div class="right-column">
                     <img src="/images/LogoApp.jpeg">
@@ -24,7 +24,8 @@
                 <div th:each="product: ${products}"  class="registro">
                     <div class="hola">
                         <div class="img_product">
-                            <img  th:src="${product.image}">
+                            <img  th:src= "${product.image}">
+                            <img th:if="${product.image}" th:src="@{'/uploads/'+ ${product.image}}" />
                         </div>
                         <div class="textInformation">
                             <p th:text="${product.name}"></p>                          
@@ -58,5 +59,11 @@
                 </div>
             </div>
         </div>
+        <script>
+            function volver() {
+                // Redirige a la página especificada al hacer clic en la imagen
+                window.location.href = '/html/functionAdmin.html';
+            }
+        </script>
     </body>
 </html>

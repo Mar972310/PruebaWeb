@@ -24,24 +24,35 @@
             <div class="funtion">
                 <div class="funtionsAdmin">
                     <div class="imagen">
-                        <img src="lista-de-verificacion.png">
+                        <img src="/images/lista-de-verificacion.png">
                     </div>
                     <div class="button">
-                        <button>Lista de cotizaciones</button>
+                        <button onclick="listQuotes()">Lista de cotizaciones</button>
                     </div>
                     
                 </div>
                 <div class="funtionsAdmin">
                     <div class="imagen">
-                        <img src="AdministracionProductos.png">
+                        <img src="/images/AdministracionProductos.png">
                     </div>
                     
                     <div class="button">
-                        <button>Administración de productos</button>
+                        <button onclick="listProducts()">Administración de productos</button>
                     </div>
                 </div>
             </div>
         </div>
-        
+        <script>
+            function listProducts() {
+                // Redirige a la página especificada al hacer clic en la imagen
+                window.location.href = "listProducts.html";
+            }
+        </script>
+        <script>
+            function listQuotes() {
+                // Redirige a la página especificada al hacer clic en la imagen
+                window.location.href = "listQuotes.html";
+            }
+        </script>
     </body>
 </html>
