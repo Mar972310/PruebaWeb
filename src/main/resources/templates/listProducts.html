@@ -25,7 +25,6 @@
                     <div class="hola">
                         <div class="img_product">
                             <img  th:src= "${product.image}">
-                            <img th:if="${product.image}" th:src="@{'/uploads/'+ ${product.image}}" />
                         </div>
                         <div class="textInformation">
                             <p th:text="${product.name}"></p>                          
