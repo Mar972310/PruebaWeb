@@ -12,7 +12,7 @@
         <div class="exit">
             <header>
                 <div class="left-column">
-                    <img src="/images/cerrar-sesion.png">
+                    <img src="/images/cerrar-sesion.png" onclick="volver()">
                 </div>
                 <div class="right-column">
                     <img src="/images/LogoApp.jpeg">
@@ -47,11 +47,13 @@
                 // Redirige a la página especificada al hacer clic en la imagen
                 window.location.href = "/api/products";
             }
-        </script>
-        <script>
             function listQuotes() {
                 // Redirige a la página especificada al hacer clic en la imagen
-                window.location.href = "listQuotes.html";
+                window.location.href = "/html/listQuotes.html";
+            }
+            function volver() {
+                // Redirige a la página especificada al hacer clic en la imagen
+                window.location.href = "/html/Login.html";
             }
         </script>
     </body>

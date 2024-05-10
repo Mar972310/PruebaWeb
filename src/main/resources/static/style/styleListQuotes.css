@@ -223,10 +223,11 @@ thead th.active, tbody td.active {
 
 header {
     display: grid;
-    grid-template-columns: 38% 60%; 
+    grid-template-columns: 40% 60%; 
     background: #000;;
     color: #fff;
-    width: 100%; 
+    width: 100%;
+    height: 6.5vw; 
     position: fixed; 
     top: 0; 
     z-index: 1000; 
@@ -243,13 +244,14 @@ header {
 
 .left-column img{
     max-width: 10%; 
-    height: auto; 
+    height: 3vw; 
     margin-left: 5%; /* Desplazamiento hacia la izquierda */
 }
 .right-column img{
-    max-width: 40%;
-    height: auto; 
+    width: 20vw;
+    height:6vw; 
 }
+
 
 .button button {
     margin-top: 30px; /* Ajusta el margen superior según sea necesario */

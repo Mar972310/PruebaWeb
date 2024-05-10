@@ -10,7 +10,7 @@
         <div class="exit">
             <header>
                 <div class="left-column">
-                    <img src="images/image.png">
+                    <img src="/images/image.png">
                 </div>
                 <div class="right-column">
                     <img src="/images/LogoApp.jpeg">
@@ -32,53 +32,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Cotización_1</td>
-                            <td>Estado</td>
-                            <td>Valor</td>
-                            <td>
-                                <div class="Acciones">
-                                    <img src="/images/lupa.png">
-                                    <img src="/images/configuraciones.png">
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Cotización_2</td>
-                            <td>Estado</td>
-                            <td>Valor</td>
-                            <td>
-                                <div class="Acciones">
-                                    <img src="/images/lupa.png">
-                                    <img src="/images/configuraciones.png">
-                                </div>
-                            </td>
-                        </tr><tr>
-                            <td>Cotización_2</td>
-                            <td>Estado</td>
-                            <td>Valor</td>
-                            <td>
-                                <div class="Acciones">
-                                    <img src="/images/lupa.png">
-                                    <img src="/images/configuraciones.png">
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Cotización_2</td>
-                            <td>Estado</td>
-                            <td>Valor</td>
-                            <td>
-                                <div class="Acciones">
-                                    <img src="/images/lupa.png">
-                                    <img src="/images/configuraciones.png">
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Cotización_2</td>
-                            <td>Estado</td>
-                            <td>Valor</td>
+                        <trtr th:each="product, rowStat : ${products}" th:class="${rowStat.odd} ? 'odd' : ''">
+                            <td th:text="${product.productId}"></td>
+                            <td th:text="${product.estado}"></td>
+                            <td th:text="${product.valor}"></td>
                             <td>
                                 <div class="Acciones">
                                     <img src="/images/lupa.png">

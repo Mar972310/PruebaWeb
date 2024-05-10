@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style/stylelogin.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <img src="/images/LogoApp.jpeg">
+    </header>
+
+    <div class="container">
+        <div class="main">
+            <input type="checkbox" id="chk" aria-hidden="true">
+            <div class="usuario">
+                <form>
+                    <label for="chk" aria-hidden="true">Datos del vehículo</label>
+                    <select name="marca" required="">
+                        <option value="">Selecciona una marca</option>
+                        <option value="Toyota">Toyota</option>
+                        <option value="Honda">Honda</option>
+                        <option value="Ford">Ford</option>
+                    </select>
+                    <select name="modelo" required="">
+                        <option value="">Selecciona un modelo</option>
+                        <option value="Toyota">Toyota</option>
+                        <option value="Honda">Honda</option>
+                        <option value="Ford">Ford</option>
+                    </select>
+                    <select name="modelo" required="">
+                        <option value="">Selecciona el cilindraje</option>
+                        <option value="Toyota">1</option>
+                        <option value="Honda">2</option>
+                        <option value="Ford">3</option>
+                    </select>
+                    <button>Cotizar Servicios</button>
+                </form>
+            </div>
+            <div class="administrador">
+                <form>
+                    <label for="chk" aria-hidden="true">Bienvenido administrador</label>
+                    <div class="input">
+                        <input type="email" name="email_admin" placeholder="Email" required="" >
+                        <input type="password" name="password_admin" placeholder="Contraseña" required="" >
+                    </div>
+                    <button onclick="go()">Ingresar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        function go() {
+            window.location.href = '/html/functionAdmin.html';
+        }
+    </script>
+</body>
+</html>

@@ -58,10 +58,17 @@
                 </div>
             </div>
         </div>
+        <footer>
+            <img src="/images/agregar-producto.png" onclick="crear()">
+        </footer>
         <script>
             function volver() {
                 // Redirige a la página especificada al hacer clic en la imagen
                 window.location.href = '/html/functionAdmin.html';
+            }
+            function crear() {
+                // Redirige a la página especificada al hacer clic en la imagen
+                window.location.href = '/api/products/create';
             }
         </script>
     </body>

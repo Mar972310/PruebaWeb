@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping(value = "/apiQuote")
+@RequestMapping(value = "/api/Quote")
 public class QuoteController {
 
     @Autowired
@@ -23,11 +23,11 @@ public class QuoteController {
         this.quoteService = quoteService;
     }
     
-    @GetMapping("/toList")
+    @GetMapping("")
     public String toList(Model model){
         List<Quote> quotes = quoteService.getAllQuotes();
         model.addAttribute("quotes", quotes);
-        return "indexQuote";
+        return "listQuotes";
     }
 
 

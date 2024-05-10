@@ -23,7 +23,7 @@
     <div class="datosProducto" th:object="${product}" method="post">
         <form th:object="${product}" method="post">
             <div class="img_product">
-                <img  th:src="${product.image}">
+                <img  th:if="${product.image}" th:src="@{'/uploads/'+ ${product.image}}">
             </div>
             <label for="name" class="labels_update">Nombre del producto</label>
             <input type="text" th:field="*{name}" class="text_details" id="name" name="name"  required>
