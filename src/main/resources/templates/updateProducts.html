@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edición de productos</title>
+    <link rel="stylesheet" href="/style/styleUpdateProduct.css">
+</head>
+<body>
+    
+    <div class="exit">
+        <header>
+            <div class="left-column">
+                <img src="/images/cerrar-sesion.png" onclick="volver()">
+            </div>
+            <div class="right-column">
+                <img src="/images/LogoApp.jpeg">
+            </div>
+        </header>
+    </div>
+        <h1>Editar producto</h1>
+
+    <div class="datosProducto" th:object="${product}" method="post">
+        <form th:object="${product}" method="post">
+            <div class="img_product">
+                <img  th:if="${product.image}" th:src="@{'/uploads/'+ ${product.image}}">
+            </div>
+            <label for="name" class="labels_update">Nombre del producto</label>
+            <input type="text" th:field="*{name}" class="text_details" id="name" name="name"  required>
+
+            <label for="description" class="labels_update">Descripción del producto</label>
+            <input type="text" th:field="*{description}" class="text_details" id="description" name="description"  required>
+
+            <label for="technicalDescription" class="labels_update">Descripción técnica del producto</label>
+            <input type="text" th:field="*{technicalDescription}" class="text_details" id="technicalDescription" name="technicalDescription"  required>
+
+            <label for="price" class="labels_update">Precio del producto</label>
+            <input type="number" th:field="*{price}" class="text_details" id="price" name="price"  required>
+
+            <label for="coin" class="labels_update">Moneda de cobro</label>
+            <input type="text" th:field="*{coin}" class="text_details" id="coin" name="coin"  required>
+
+            <label for="discount" class="labels_update">Descuento del producto</label>
+            <input type="number" th:field="*{discount}" class="text_details" id="discount" name="discount"  required>
+
+            <label for="tax" class="labels_update">Tasa de impuesto del producto</label>
+            <input type="number" th:field="*{tax}" class="text_details" id="tax" name="tax"  required>
+        </div>
+        <div class="right">
+            <button  th:attr="onclick='window.location.href=\'/api/products/update/' + *{productId} + '\''"  method="POST">Actualizar</button>
+        </div>
+    </div>
+        
+    <script>
+        function volver() {
+            // Redirige a la página especificada al hacer clic en la imagen
+            window.location.href = "/api/products";
+        }
+    </script>
+</body>
+</html>
