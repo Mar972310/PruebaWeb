@@ -18,7 +18,7 @@ body h1{
 
 header {
     display: grid;
-    grid-template-columns: 40% 60%; 
+    grid-template-columns: 40% 52% 8%; 
     background: #000;;
     color: #fff;
     width: 100%;
@@ -27,6 +27,7 @@ header {
     top: 0; 
     z-index: 1000; 
     align-items: center;
+    margin-bottom: 40px;
 }
 
 .left-column, .right-column {
@@ -42,11 +43,16 @@ header {
     height: 3vw; 
     margin-left: 5%; /* Desplazamiento hacia la izquierda */
 }
-.right-column img{
+.center-column img{
     width: 20vw;
     height:6vw; 
 }
 
+.right-column img{
+    width: 5vw; 
+    height: 5vw; 
+ 
+}
 .registro {
     background-color: #ffffff7d; /* Color de fondo de la cuadrícula */
     border-radius: 15px;
@@ -108,7 +114,7 @@ header {
     justify-content:flex-start; /* Centra horizontalmente el contenido */
     align-items:end; 
     flex-direction: row;
-    gap:15%;
+    gap:40%;
     padding: 0px;
 }
 
@@ -161,6 +167,154 @@ header {
     width: 100%; /* Ajusta el ancho de la imagen al tamaño del botón */
     height: auto; /* Ajusta automáticamente la altura de la imagen */
 }
+
+
+.imgSearch img{
+    display: block;
+    width: 40px;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centra la imagen dentro del contenedor */
+}
+
+.top{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    margin-top: 8vw;
+    width: 68%;
+    gap:3vw;
+}
+
+.buscar {
+    position: relative;
+    padding: 5px;
+  }
+  
+  .buscar input {
+    width: 0;
+    height: 40px;
+    padding: 0 20px;
+    font-size: 18px;
+    color: #222;
+    outline: none;
+    border: 1px solid silver;
+    border-radius: 30px;
+    transition: all 0.6s ease;
+  }
+  
+  .btn {
+    width: 55px;
+    height: 55px;
+    line-height: 55px;
+    top: 0;
+    right: 0;
+    position: absolute;
+    background: #D91F28;
+    text-align: center;
+    color: #E3E6EC;
+    font-size: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  .buscar:hover input {
+    width: 240px;
+    background-color:#E3E6EC ;
+  }
+  
+  .buscar input:focus {
+    width: 240px;
+  }
+
+.category{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    width: 60%;
+    height: 60px;
+    align-items: center;
+    padding: 5px;
+    
+
+}
+
+
+.category {
+    position: relative;
+  }
+  
+  .scroll-left-button,
+  .scroll-right-button {
+    position: absolute;
+    width: 5%;
+    height: auto;
+    
+  }
+  
+  .scroll-left-button {
+    left: 20px;
+  }
+  
+  .scroll-right-button {
+    right: 40px;
+  }
+  
+.search{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    width: 40%;
+    height: 60px;
+    align-items: center;
+}
+
+.grid-button {
+    display: flex; /* Cambiar a un contenedor flexible */
+    overflow-x: auto; /* Permitir desplazamiento horizontal */
+    padding: 10px 0; /* Ajustar el espacio alrededor del contenedor */
+    width: 35vw;
+    height: 45px;
+    justify-content: flex-start;
+    flex-direction: row;
+    overflow-x: hidden;
+    margin-left: 20px;
+    margin-right: 40px;
+
+    border-radius: 2vw;
+}
+
+.grid-button button {
+    flex: 0 0 auto; /* Evitar que los botones se ajusten automáticamente */
+    border-radius: 8px; /* Borde redondeado */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+    margin-right: 4px; /* Espacio entre los botones */
+    width: 10vw; /* Ancho mínimo de los botones */
+    height: 50px;
+    background-color: #E3E6EC;
+}
+
+.grid-button button:active {
+    border-color: #FFCF28; /* Cambia el color del borde cuando el botón está activo */
+    outline: none; /* Elimina el contorno predeterminado */
+    background: #FFCF28;
+}
+
+.active-button {
+    border-color: #FFCF28; /* Cambia el color del borde cuando el botón está activo */
+    outline: none; /* Elimina el contorno predeterminado */
+}
+
+
+/* Media query para ajustar el número de columnas en pantallas pequeñas */
+@media screen and (max-width: 768px) {
+    .grid-button {
+        grid-template-columns: repeat(2, minmax(0, 50%)); /* Cambiar a dos columnas en pantallas pequeñas */
+    }
+}
+
 
 footer {
     position: fixed;

@@ -32,7 +32,6 @@ public class Quote implements Serializable {
     }
 
     public Quote(String estate, String price, Vehicle vehicle) {
-        this.quoteId = UUID.randomUUID().toString();
         this.estate = estate;
         this.price = price;
         this.vehicle = vehicle;

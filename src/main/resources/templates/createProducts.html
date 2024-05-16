@@ -26,9 +26,9 @@
             <label for="technicalDescription" class="labels_update">Descripción técnica del producto</label>
             <input type="file" name="file" class="mb-2" th:text="${product.image}" required >
 
-            <label for="productId" class="labels_update">Id del producto</label>
+            <!--<label for="productId" class="labels_update">Id del producto</label>
             <input type="number" th:field="*{productId}" class="text_details" id="productId" name="name"  required>
-
+            -->
             <label for="name" class="labels_update">Nombre del producto</label>
             <input type="text" th:field="*{name}" class="text_details" id="name" name="name"  required>
 
@@ -53,6 +53,7 @@
         <div class="right">
             <button type="submit">Aceptar</button>
         </div>
+    </form>
     </div>
         
     <script>

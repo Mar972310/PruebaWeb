@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<<head>
+    <meta charset="UTF-8">
+    <title>productos</title>
+    <link rel="stylesheet" href="/style/styleListProductsClient.css">
+</head>
+<body>
+        <div class="exit">
+            <header>
+                <div class="left-column">
+                    <img src="/images/cerrar-sesion.png" onclick="volver()">
+                </div>
+                <div class="center-column">
+                    <img src="/images/LogoApp.jpeg">
+                </div>
+
+                <div class="right-column">
+                    <img src="/images/verificar.png">
+                </div>
+               
+            </header>
+        </div>
+        <div class="top">
+            <div class="category">
+                <button class="img_button scroll-left-button" type="button" method="get">
+                    <img src="/images/flecha-izquierda.png">
+                </button>
+                <div class="grid-button">
+                    
+                    <div th:each="category: ${categories}" >
+                        <button th:attr="onclick='window.location.href=\'/api/quote/' + ${category.categoryId} + '\''" type="button" method="get">
+                            <span th:text="${category.name}"></span>
+                        </button>
+                    </div>
+                </div>
+                <button class="img_button scroll-right-button" type="button" method="get">
+                    <img src="/images/flecha-correcta.png">
+                </button>
+            </div>
+            <div class="search">
+                <div class="buscar">
+                    <input type="text" placeholder="Buscar" required />
+                    <div class="btn">
+                      <i class="imgSearch">
+                        <img src="/images/search.png">
+                      </i>
+                    </div>
+                  </div>
+            </div>
+
+        </div>
+            
+
+        <div class="products">
+            <div class="grid-container">
+                <div th:each="product: ${products}"  class="registro">
+                    <div class="hola">
+                        <div class="img_product">
+                            <img th:if="${product.image}" th:src="@{'/uploads/'+ ${product.image}}" />
+                        </div>
+                        <div class="textInformation">
+                            <p th:text="${product.name}"></p>                          
+                            <div class="information">
+                                <div class="information_text">
+                                    <h4>Desde</h4>
+                                    <div class="new-price" th:if="${product.discount > 0}">
+                                        <span>$</span><span th:text="${product.price - (product.price * product.discount / 100)}"></span>
+                                    </div>
+                                    <div class="current-price" th:unless="${product.discount > 0}">
+                                        <span>$</span><span th:text="${product.price}"></span>
+                                    </div>
+                                    <div class="old-price" th:if="${product.discount > 0}">
+                                        <s><span>$</span><span th:text="${product.price}"></span></s>
+                                    </div>
+                                    <div class="old-price" th:if="${product.discount < 1}">
+                                        <p></p>
+                                    </div>
+                                </div>
+                                <div class="acciones" name="${product.productId}">
+                                    <button class="img_button "  th:attr="onclick='window.location.href=\'/api/products/update/' + ${product.productId} + '\''" type="button" method="get">
+                                        <img src="/images/anadir.png">
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            function volver() {
+                // Redirige a la página especificada al hacer clic en la imagen
+                window.location.href = '/html/Login.html';
+            }
+            function crear() {
+                // Redirige a la página especificada al hacer clic en la imagen
+                window.location.href = '/api/products/create';
+            }
+            
+        </script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $(".scroll-left-button").click(function() {
+                    // Desplaza el contenido hacia la izquierda
+                    $(".grid-button").animate({
+                        scrollLeft: "-=100px" // Puedes ajustar la cantidad de desplazamiento según tu diseño
+                    }, "fast");
+                });
+        
+                $(".scroll-right-button").click(function() {
+                    // Desplaza el contenido hacia la derecha
+                    $(".grid-button").animate({
+                        scrollLeft: "+=100px" // Puedes ajustar la cantidad de desplazamiento según tu diseño
+                    }, "fast");
+                });
+        
+                // Desactiva el scroll horizontal predeterminado del ratón
+                $(".grid-button").on("wheel", function(e) {
+                    e.preventDefault();
+                    $(".grid-button").stop().animate({
+                        scrollLeft: $(".grid-button").scrollLeft() + (e.originalEvent.deltaY * 30)
+                    }, 5);
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function() {
+                $(".grid-button button").click(function() {
+                    // Elimina la clase 'active-button' de todos los botones
+                    $(".grid-button button").removeClass("active-button");
+                    
+                    // Agrega la clase 'active-button' al botón presionado
+                    $(this).addClass("active-button");
+                });
+            });
+        </script>
+        
+        
+    </body>
+</html>

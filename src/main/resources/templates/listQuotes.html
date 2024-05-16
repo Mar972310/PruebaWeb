@@ -32,12 +32,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <trtr th:each="product, rowStat : ${products}" th:class="${rowStat.odd} ? 'odd' : ''">
-                            <td th:text="${product.productId}"></td>
-                            <td th:text="${product.estado}"></td>
-                            <td th:text="${product.valor}"></td>
+                        <tr th:each="quote, rowStat : ${quotes}" th:class="${rowStat.odd} ? 'odd' : ''">
+                            <td th:text="${quote.id}"></td>
+                            <td th:text="${quote.estate}"></td>
+                            <td th:text="${quote.price}"></td>
                             <td>
-                                <div class="Acciones">
+                                <div class="Acciones" >
+                                    
                                     <img src="/images/lupa.png">
                                     <img src="/images/configuraciones.png">
                                 </div>

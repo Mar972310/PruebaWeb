@@ -38,13 +38,26 @@
             </form>
         </div>
         <div class="administrador">
-            <form>
+            <form id="adminForm">
                 <label for="chk" aria-hidden="true">Bienvenido administrador</label>
-                <input type="email" name="email_admin" placeholder="Email" required="" >
+                <input type="email" name="email_admin" id="email_admin" placeholder="Email" required="" >
                 <input type="password" name="password_admin" placeholder="Contraseña" required="" >
-                <button>Ingresar</button>
+                <button type="button" onclick="redirectToEmail()">Ingresar</button>
             </form>
         </div>
     </div>
+    <script>
+        function redirectToEmail() {
+            var emailValue = document.getElementById("email_admin").value;
+            var url = "/ingresa/" + emailValue;
+            console.log("hola", emailValue);
+            window.location.href = "/ingresa/" + emailValue;
+        }
+
+        document.getElementById("adminForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Evitar el envío del formulario
+            redirectToEmail(); // Llamar a la función que maneja el envío del formulario
+        });
+    </script>
 </body>
 </html>

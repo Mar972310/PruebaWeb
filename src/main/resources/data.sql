@@ -1,4 +1,7 @@
--- Insertar categorías de ejemplo
+INSERT INTO ADMINISTRATORS (EMAIL, PASSWORD) VALUES ('root@mail.com', '1234');
+INSERT INTO ADMINISTRATORS (EMAIL, PASSWORD) VALUES ('hola@mail.com', '1234');
+
+INSERT INTO CATEGORIES (ID, NAME) VALUES ('0', 'Todos');
 INSERT INTO CATEGORIES (ID, NAME) VALUES ('1', 'Electronics');
 INSERT INTO CATEGORIES (ID, NAME) VALUES ('2', 'Clothing');
 INSERT INTO CATEGORIES (ID, NAME) VALUES ('3', 'Books');
@@ -20,7 +23,7 @@ INSERT INTO QUOTES (ID, ESTATE, PRICE, VEHICLE_ID) VALUES ('4', 'Active', '35000
 INSERT INTO QUOTES (ID, ESTATE, PRICE, VEHICLE_ID) VALUES ('5', 'Active', '40000', '5');
 
 -- Insertar productos de ejemplo
-INSERT INTO PRODUCTS (ID, NAME, DESCRIPTION, TECHNICAL_DESCRIPTION, IMAGE, PRICE, COIN, DISCOUNT, TAX, CATEGORY_ID, QUOTE_ID) VALUES ('1', 'Laptop', 'Example laptop description', 'Technical specs here', 'aceite.png', '1000', 'USD', 10, 5, '1', '1');
+INSERT INTO PRODUCTS (ID, NAME, DESCRIPTION, TECHNICAL_DESCRIPTION, IMAGE, PRICE, COIN, DISCOUNT, TAX, CATEGORY_ID, QUOTE_ID) VALUES ('1', 'Laptop', 'Example laptop description', 'Technical specs here', 'aceite.png', '1000', 'USD', 10, 5, '2', '1');
 INSERT INTO PRODUCTS (ID, NAME, DESCRIPTION, TECHNICAL_DESCRIPTION, IMAGE, PRICE, COIN, DISCOUNT, TAX, CATEGORY_ID, QUOTE_ID) VALUES ('2', 'T-shirt', 'Cotton T-shirt', 'Size: M, Color: Red', 'acelerador.png', '20', 'USD', 0, 5, '2', '2');
 INSERT INTO PRODUCTS (ID, NAME, DESCRIPTION, TECHNICAL_DESCRIPTION, IMAGE, PRICE, COIN, DISCOUNT, TAX, CATEGORY_ID, QUOTE_ID) VALUES ('3', 'Book', 'Fiction novel', 'Author: John Doe', 'amortiguador.png', '15', 'USD', 0, 5, '3', '3');
 INSERT INTO PRODUCTS (ID, NAME, DESCRIPTION, TECHNICAL_DESCRIPTION, IMAGE, PRICE, COIN, DISCOUNT, TAX, CATEGORY_ID, QUOTE_ID) VALUES ('4', 'Chair', 'Wooden chair', 'Size: Standard', 'balanceo-de-ruedas.png', '50', 'USD', 0, 5, '4', '4');
