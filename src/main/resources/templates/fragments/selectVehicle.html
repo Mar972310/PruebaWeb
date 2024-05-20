@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Productos</title>
+</head>
+<body>
+    <div class="model" th:fragment="model">
+        <button class="img_button scroll-left-button" type="button" method="get">
+            <img src="/images/flecha-izquierda.png">
+        </button>
+        <div class="grid-button"  >
+            <div th:each="vehicle : ${vehicles}">
+                <button class="buttonCategory" th:attr="data-model-id=${vehicle.model}" type="button">
+                    <div class="modelInformation">
+                        <img th:src="${vehicle.image}">
+                    <span th:text="${vehicle.model}"></span>
+                    </div>  
+                </button>
+            </div>
+        </div>
+        <button class="img_button scroll-right-button" type="button" method="get">
+            <img src="/images/flecha-correcta.png">
+        </button>
+
+    </div>
+    
+</body>

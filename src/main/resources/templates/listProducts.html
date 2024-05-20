@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
-<<head>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
     <meta charset="UTF-8">
-    <title>productos</title>
+    <title>Listado de productos</title>
     <link rel="stylesheet" href="/style/styleListProducts.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
-<body>
-
-    <h1>Listado de productos</h1>
     <body>
+
+        <h1>Listado de productos</h1>
         <div class="exit">
             <header>
                 <div class="left-column">
@@ -19,57 +19,44 @@
                 </div>
             </header>
         </div>
-        <div class="products">
-            <div class="grid-container">
-                <div th:each="product: ${products}"  class="registro">
-                    <div class="hola">
-                        <div class="img_product">
-                            <img th:if="${product.image}" th:src="@{'/uploads/'+ ${product.image}}" />
-                        </div>
-                        <div class="textInformation">
-                            <p th:text="${product.name}"></p>                          
-                            <div class="information">
-                                <div class="information_text">
-                                    <h4>Desde</h4>
-                                    <div class="new-price" th:if="${product.discount > 0}">
-                                        <span>$</span><span th:text="${product.price - (product.price * product.discount / 100)}"></span>
-                                    </div>
-                                    <div class="current-price" th:unless="${product.discount > 0}">
-                                        <span>$</span><span th:text="${product.price}"></span>
-                                    </div>
-                                    <div class="old-price" th:if="${product.discount > 0}">
-                                        <s><span>$</span><span th:text="${product.price}"></span></s>
-                                    </div>
-                                    <div class="old-price" th:if="${product.discount < 1}">
-                                        <p></p>
-                                    </div>
-                                </div>
-                                <div class="acciones" name="${product.productId}">
-                                    <button class="img_button "  th:attr="onclick='window.location.href=\'/api/products/update/' + ${product.productId} + '\''" type="button" method="get">
-                                        <img src="/images/boligrafo.png">
-                                    </button>
-                                    <button class="img_button " th:attr="onclick='window.location.href=\'/api/products/delete/' + ${product.productId} + '\''" type="button" method="get">
-                                        <img src="/images/eliminar.png">
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="products" th:include="fragments/productsAdmin :: grid-container">
         </div>
         <footer>
             <img src="/images/agregar-producto.png" onclick="crear()">
         </footer>
+
         <script>
             function volver() {
-                // Redirige a la página especificada al hacer clic en la imagen
                 window.location.href = '/html/functionAdmin.html';
             }
+
             function crear() {
-                // Redirige a la página especificada al hacer clic en la imagen
                 window.location.href = '/api/products/create';
             }
+
+            
+            $(document).ready(function(){
+            // Delegar el evento de clic en el contenedor padre
+            $('.products').on('click', '.delete-btn', function(){
+                var productId = $(this).data('product-id'); // Obtener el ID del producto
+                // Confirmar la eliminación (opcional)
+                if (confirm('¿Estás seguro de eliminar este producto?')) {
+                    $.ajax({
+                        url: '/api/products/delete/' + productId,
+                        method: 'DELETE',
+                        success: function(data) {
+                            $('.products').empty().html(data);
+                        },
+                        error: function() {
+                            console.log('Error al realizar la solicitud AJAX.');
+                            alert('Error al actualizar los elementos');
+                        }
+                    });
+                }
+            });
+        });
+            
+            
         </script>
     </body>
 </html>

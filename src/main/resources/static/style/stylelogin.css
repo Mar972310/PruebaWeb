@@ -100,6 +100,18 @@ option {
     background-color: #e0dede; /* Color de fondo de las opciones */
     color: #000; /* Color del texto de las opciones */
     font-size: 12px; /* Tamaño de fuente de las opciones */
+
+}
+
+.modelo-{
+    display: flex;
+    direction: row;
+    width: 100%;
+    height: 100%;
+}
+option img{
+    width: 100%;
+    height: 100%;
 }
 
 /* Estilo para cuando el desplegable está enfocado */

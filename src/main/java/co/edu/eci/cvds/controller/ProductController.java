@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
@@ -82,11 +83,17 @@ public class ProductController {
         }
     }
 
-    @GetMapping("/delete/{productId}")
-    public String deleteProduct(@PathVariable String productId) {
+
+
+    @DeleteMapping("/delete/{productId}")
+    public String deleteProduct(@PathVariable String productId, Model model) {
         productService.deleteProduct(productId);
-        return "redirect:/api/products";
+        List<Product> products = productService.getAllProducts();
+        model.addAttribute("products", products);
+        return "fragments/productsAdmin :: grid-container"; // Devuelve solo el fragmento de la lista de productos
     }
+
+
 
     @GetMapping("/create")
     public String createProduct(Model model) {

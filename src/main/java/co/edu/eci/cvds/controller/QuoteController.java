@@ -54,18 +54,18 @@ public class QuoteController {
     public String productsQuote(@PathVariable String categoryId, Model model){
         if (!categoryId.equals("0")){
             Category category = categoryService.getCategory(categoryId);
-        if (!category.equals(null)) {
-            List<Product>products = category.getProducts();
-            List<Category> categories = categoryService.getAllCategories();
-            model.addAttribute("products",products);
-            model.addAttribute("categories",categories);
-            return "listProductsClient";
-        } else {
-            // Manejo de error si no se encuentra el empleado
-            return "error"; // Puedes redirigir a una página de error
-        }
+            if (!category.equals(null)) {
+                List<Product>products = category.getProducts();
+                model.addAttribute("products",products);
+                return "fragments/productClient :: grid-container";
+            } else {
+                // Manejo de error si no se encuentra el empleado
+                return "error"; // Puedes redirigir a una página de error
+            }
         }else{
-            return "redirect:/api/quote";
+            List<Product> products = productService.getAllProducts();
+            model.addAttribute("products",products);
+            return "fragments/productClient :: grid-container";
         }
     }  
     
