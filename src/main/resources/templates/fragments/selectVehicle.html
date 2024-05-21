@@ -11,7 +11,7 @@
         </button>
         <div class="grid-button"  >
             <div th:each="vehicle : ${vehicles}">
-                <button class="buttonCategory" th:attr="data-model-id=${vehicle.model}" type="button">
+                <button class="buttonCategory" th:attr="data-model-id=${vehicle.vehicleId}" type="button">
                     <div class="modelInformation">
                         <img th:src="${vehicle.image}">
                     <span th:text="${vehicle.model}"></span>

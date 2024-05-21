@@ -45,11 +45,10 @@ public class QuoteController {
     }
 
     @GetMapping("")
-    public String informationClient(Model model,@RequestParam("brand") String brand,@RequestParam("year") int year, @RequestParam("cylinder") Integer cylinder,
-            @RequestParam("model") String modelv) {
+    public String informationClient(Model model, @RequestParam("vehicleId") String vehicleId) {
                 Quote quote= new Quote();
-                //Vehicle vehicleSelect = vehicleService.findVehicle(modelv, year, cylinder);
-                quoteService.addQuote(quote);
+                Vehicle vehicleSelect = vehicleService.getVehicle(vehicleId);
+                quoteService.addQuote(quote,vehicleSelect);
                 List<Product> products = productService.getAllProducts();
         List<Category> categories = categoryService.getAllCategories();
         model.addAttribute("products",products);

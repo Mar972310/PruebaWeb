@@ -19,10 +19,10 @@ public class QuoteService {
         this.quoteRepository = quoteRepository;
     }
 
-    public Quote addQuote(Quote quote) {
+    public Quote addQuote(Quote quote,Vehicle vehicle) {
         quote.setId(UUID.randomUUID().toString());
         quote.setEstate("Activo");
-        //quote.setVehicle(vehicle);
+        quote.setVehicle(vehicle);
         quote.setPrice(0);
         quote.setProducts(null);
         return quoteRepository.save(quote);

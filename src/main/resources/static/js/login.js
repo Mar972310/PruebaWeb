@@ -124,19 +124,10 @@ $(document).ready(function() {
     $('#quote').on('submit', function(event) {
         event.preventDefault();
         // Obtener los valores seleccionados
-        var selectedBrand = $('#brand').val();
-        var selectedYear = $('#yearSelect').val();
-        var selectedCylinder = $('#cylinderSelect').val();
         var selectedModel = $('.buttonCategory.selected').data('model-id');
-
-        // Construir la URL con los parámetros de consulta
+        console.log('Selected Model ID:', selectedModel);
         var url = '/api/quote?' +
-                  'brand=' + encodeURIComponent(selectedBrand) +
-                  '&year=' + encodeURIComponent(selectedYear) +
-                  '&cylinder=' + encodeURIComponent(selectedCylinder) +
-                  '&model=' + encodeURIComponent(selectedModel);
-
-        // Redirigir a la página de resultados con los parámetros
+                  'vehicleId=' + encodeURIComponent(selectedModel);
         window.location.href = url;
     });
 });
