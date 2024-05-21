@@ -1,6 +1,7 @@
 package co.edu.eci.cvds.service;
 
 import co.edu.eci.cvds.model.Quote;
+import co.edu.eci.cvds.model.Product;
 import co.edu.eci.cvds.model.Vehicle;
 import co.edu.eci.cvds.repository.QuoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,5 +42,16 @@ public class QuoteService {
 
     public void deleteQuote(String quoteId) {
         quoteRepository.deleteById(quoteId);
+    }
+
+    public Quote updateQuoteforPrice(Quote quote) {
+        // Calcular el nuevo precio total de la cotización
+        int newPrice = 0;
+        for (Product product : quote.getProducts()) {
+            newPrice += product.getPrice();
+        }
+        quote.setPrice(newPrice);
+        // Actualizar la cotización en la base de datos
+        return quoteRepository.save(quote);
     }
 }
