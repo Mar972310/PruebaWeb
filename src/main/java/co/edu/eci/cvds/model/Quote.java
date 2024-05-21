@@ -19,7 +19,7 @@ public class Quote implements Serializable {
     private String estate;
 
     @Column(name = "PRICE")
-    private String price;
+    private double price;
 
     @ManyToOne // Relación Many-to-One con la entidad Vehicle
     @JoinColumn(name = "VEHICLE_ID", referencedColumnName = "ID", nullable = true) // Columna de la llave foránea
@@ -31,7 +31,7 @@ public class Quote implements Serializable {
     public Quote() {
     }
 
-    public Quote(String estate, String price, Vehicle vehicle) {
+    public Quote(String estate, double price, Vehicle vehicle) {
         this.estate = estate;
         this.price = price;
         this.vehicle = vehicle;
@@ -55,11 +55,11 @@ public class Quote implements Serializable {
         this.estate = estate;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

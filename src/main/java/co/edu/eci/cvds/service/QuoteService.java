@@ -1,6 +1,7 @@
 package co.edu.eci.cvds.service;
 
 import co.edu.eci.cvds.model.Quote;
+import co.edu.eci.cvds.model.Vehicle;
 import co.edu.eci.cvds.repository.QuoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,10 @@ public class QuoteService {
 
     public Quote addQuote(Quote quote) {
         quote.setId(UUID.randomUUID().toString());
+        quote.setEstate("Activo");
+        //quote.setVehicle(vehicle);
+        quote.setPrice(0);
+        quote.setProducts(null);
         return quoteRepository.save(quote);
     }
 

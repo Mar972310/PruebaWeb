@@ -52,13 +52,14 @@ public class UserController {
         return "pruebaLogin";
     }
 
-    @GetMapping("/{brandId}")
+    @GetMapping("/model/{brandId}")
     public String tolListVehicles(@PathVariable String brandId, Model model){
         Brand brand = brandService.getbrand(brandId);
         List<Vehicle> vehicles = brand.getVehicles();
         model.addAttribute("vehicles", vehicles);
         return "fragments/selectVehicle :: model";
     }
+
 
 /**
     @PostMapping

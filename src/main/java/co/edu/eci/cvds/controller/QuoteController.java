@@ -3,10 +3,12 @@ package co.edu.eci.cvds.controller;
 
 import co.edu.eci.cvds.model.Configuration;
 import co.edu.eci.cvds.model.Quote;
+import co.edu.eci.cvds.model.Vehicle;
 import co.edu.eci.cvds.model.Product;
 import co.edu.eci.cvds.model.Category;
 import co.edu.eci.cvds.service.CategoryService;
 import co.edu.eci.cvds.service.ProductService;
+import co.edu.eci.cvds.service.VehicleService;
 import co.edu.eci.cvds.service.QuoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,13 +27,14 @@ public class QuoteController {
     private QuoteService quoteService;
     private final ProductService productService;
     private final CategoryService categoryService;
-    
+    private final VehicleService vehicleService;
 
     
-    public QuoteController(QuoteService quoteService,ProductService productService,CategoryService categoryService){
+    public QuoteController(QuoteService quoteService,ProductService productService,CategoryService categoryService, VehicleService vehicleService){
         this.quoteService = quoteService;
         this.productService = productService;
         this.categoryService = categoryService;
+        this.vehicleService =vehicleService;
     }
     
     @GetMapping("/admistrator/listQuote")
@@ -42,13 +45,20 @@ public class QuoteController {
     }
 
     @GetMapping("")
-    public String informationClient(Model model){
-        List<Product> products = productService.getAllProducts();
+    public String informationClient(Model model,@RequestParam("brand") String brand,@RequestParam("year") int year, @RequestParam("cylinder") Integer cylinder,
+            @RequestParam("model") String modelv) {
+                Quote quote= new Quote();
+                //Vehicle vehicleSelect = vehicleService.findVehicle(modelv, year, cylinder);
+                quoteService.addQuote(quote);
+                List<Product> products = productService.getAllProducts();
         List<Category> categories = categoryService.getAllCategories();
         model.addAttribute("products",products);
         model.addAttribute("categories",categories);
         return "listProductsClient";
+
     }
+
+
     
     @GetMapping("/{categoryId}")
     public String productsQuote(@PathVariable String categoryId, Model model){
