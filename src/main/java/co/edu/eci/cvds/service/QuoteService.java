@@ -21,7 +21,7 @@ public class QuoteService {
 
     public Quote addQuote(Quote quote,Vehicle vehicle) {
         quote.setId(UUID.randomUUID().toString());
-        quote.setEstate("Activo");
+        quote.setEstate("Creado");
         quote.setVehicle(vehicle);
         quote.setPrice(0);
         quote.setProducts(null);
