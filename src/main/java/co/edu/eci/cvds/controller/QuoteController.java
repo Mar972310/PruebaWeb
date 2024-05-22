@@ -1,7 +1,6 @@
 package co.edu.eci.cvds.controller;
 
 
-import co.edu.eci.cvds.model.Configuration;
 import co.edu.eci.cvds.model.Quote;
 import co.edu.eci.cvds.model.Vehicle;
 import co.edu.eci.cvds.model.Product;

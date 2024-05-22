@@ -46,6 +46,11 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<version>1.18.30</version>
@@ -88,12 +93,14 @@
 							</execution>
 							<execution>
 								<id>report</id>
+								<phase>test</phase> <!-- Asegúrate de que el reporte se genera en la fase de pruebas -->
 								<goals>
 									<goal>report</goal>
 								</goals>
 								<configuration>
 									<formats>
 										<format>XML</format>
+										<format>HTML</format>
 									</formats>
 								</configuration>
 							</execution>

@@ -1,7 +1,6 @@
 package co.edu.eci.cvds.service;
 
 import co.edu.eci.cvds.model.Product;
-import co.edu.eci.cvds.model.Configuration;
 import co.edu.eci.cvds.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
