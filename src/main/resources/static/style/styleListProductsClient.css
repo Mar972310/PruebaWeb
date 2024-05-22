@@ -406,8 +406,8 @@ header {
     position: fixed;
     display: flex;
     top: 0;
-    right: -22vw; /* Ajusta este valor al ancho del cuadro lateral */
-    width: 22vw; /* Ancho del cuadro lateral */
+    right: -27vw; /* Ajusta este valor al ancho del cuadro lateral */
+    width: 27vw; /* Ancho del cuadro lateral */
     height: 100vh;
     background-color:#E3E6EC;
     justify-content: center;
@@ -419,6 +419,7 @@ header {
     z-index: 9999934563456;
     overflow-y: auto;
     border-radius: 20px;
+    
 }
 
 .sidebar-content {
@@ -443,9 +444,20 @@ header {
     justify-content: flex-start;
     align-content: center;
     flex-direction: row;
+    font-size: 4vh;
+    padding-top: 1vh;
+    gap: 2.5vw;
+}
 
-padding-top: 1vh;
-    gap: 7.5vw;
+.text{
+    width: 15vw;
+    height: 9.5vh;
+    top:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background-color: #D91F28;
 }
 
 .image-x{
@@ -487,6 +499,7 @@ button:hover{
     margin-left: 10px;
     width: 1vw;
     height: 1vw;
+   
 }
 .image-null img {
     max-width: 100%; /* Asegura que la imagen no se desborde */
@@ -499,6 +512,83 @@ button:hover{
     position:absolute;
     top:9vh; /* Margen para la línea */
 }
+
+.productss{
+    height: 1;
+}
+.productSelect{
+    height: 12vh;
+    width: 26vw;
+    padding: 0;
+    display: flex;
+    gap: 5px;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+    font-size: 1em;
+}
+
+.textName{
+    height: 12vh;
+    width: 12vw;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+
+    align-content: center;
+    align-items: center;
+    font-size:3.5vh;
+}
+
+.prices{
+    height: 12vh;
+    width: 12vw;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+}
+
+.old-prices{
+    font-size: 3vh;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.new-prices {
+    font-size: 3.5vh;
+    width: 100%;
+    justify-content: flex-start;
+
+}
+.current-prices{
+    font-size: 3.5vh;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.imageP {
+    height: 10vh;
+    width: 10vh;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.imageP img{
+    height: 9.5vh;
+    width: 9.5vh;
+    border-radius: 50%;
+    border-color: #FFCF28;
+ 
+    
+}
+
 
 .sidebar.active {
     right: 0;
@@ -518,7 +608,7 @@ button:hover{
 
 /* Ajuste del contenido cuando el cuadro lateral está activo */
 .jij.shift-left {
-    margin-right: 250px; /* Debe coincidir con el ancho del cuadro lateral */
+    margin-right: 27vw; /* Debe coincidir con el ancho del cuadro lateral */
 }
 
 /* Media queries para hacer el diseño responsive */

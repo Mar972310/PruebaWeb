@@ -10,7 +10,10 @@
         <div class="sidebar-content">
             <div class="car-top">
                 <img src="/images/x.png">
-                <h3>Tu carrito</h3>
+                <div class="text">
+                    <h3>Tu carrito</h3>
+                </div>
+                
             </div>
             <div class="line"></div>
 
@@ -23,14 +26,35 @@
                 </div>
             </div>
 
-            <ul th:if="${!#lists.isEmpty(productsSelect)}">
+            <div th:if="${!#lists.isEmpty(productsSelect)}" class="productss">
                 <h2>Productos y servicios</h2>
                 <!-- Iterar sobre los productos y mostrar cada uno -->
                 <li th:each="product : ${productsSelect}">
-                    <span th:text="${product.name}">Nombre del producto</span>
-                    <span th:text="${product.price}">Precio del producto</span>
+                    <div class="productSelect">
+                        <div class="imageP">
+                            <img th:if="${product.image}" th:src="@{'/uploads/' + ${product.image}}" /> 
+                        </div>
+                        <div class="textName">
+                            <h5 th:text="${product.name}">hhghghjhgghj</h5>
+                        </div>
+                        
+                        <div class="prices">
+                            <div class="new-prices" th:if="${product.discount > 0}">
+                                <span>$</span><span th:text="${product.price - (product.price * product.discount / 100)}"></span>
+                            </div>
+                            <div class="current-prices" th:unless="${product.discount > 0}">
+                                <span>$</span><span th:text="${product.price}"></span>
+                            </div>
+                            <div class="old-prices" th:if="${product.discount > 0}">
+                                <s><span>$</span><span th:text="${product.price}"></span></s>
+                            </div>
+                            <div class="old-prices" th:if="${product.discount < 1}">
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
                 </li>
-            </ul>
+            </div>
         </div>
     </div>
 </body>
