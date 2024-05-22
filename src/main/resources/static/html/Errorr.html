@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error Page</title>
+    <style>
+        body{
+            margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Jost', sans-serif;
+    flex-direction: column;
+    background: #0D131A; 
+        }
+    </style>
+</head>
+<body>
+<h1>Something went wrong! </h1>
+<h1 style="color: red;" th:text="'error: ' + ${error}"/>
+<h1 style="color: red;" th:text="'status: ' + ${status}"/>
+<h1 style="color: red;" th:text="'message: ' + ${message}"/>
+<h2>Our Engineers are on it</h2>
+<a href="/api/quote">Volver a productos</a>
+
+</body>
+</html>

@@ -31,11 +31,11 @@ public class Category implements Serializable {
 
     // Getters y setters
 
-    public String getId() {
+    public String getCategoryId() {
         return categoryId;
     }
 
-    public void setId(String categoryId) {
+    public void setCategoryId(String categoryId) {
         this.categoryId = categoryId;
     }
 

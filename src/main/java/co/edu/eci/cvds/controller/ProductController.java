@@ -2,6 +2,7 @@ package co.edu.eci.cvds.controller;
 
 import co.edu.eci.cvds.model.Product;
 import co.edu.eci.cvds.service.ProductService;
+import co.edu.eci.cvds.service.CategoryService;
 import co.edu.eci.cvds.service.UploadImageService;
 
 import org.springframework.core.io.Resource;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
@@ -27,8 +29,9 @@ public class ProductController {
     private final ProductService productService;
     private final UploadImageService uploadImageService;
 
+
     @Autowired
-    public ProductController(ProductService productService,UploadImageService uploadImageService) {
+    public ProductController(ProductService productService, UploadImageService uploadImageService) {
         this.productService = productService;
         this.uploadImageService = uploadImageService;
     }
@@ -37,12 +40,16 @@ public class ProductController {
     public String toList(Model model) {
         List<Product> products=productService.getAllProducts();
         model.addAttribute("products", products);
-        for (Product produc : products) {
-            System.out.println(produc.toString());
-        }
+
         return "listProducts";
     }
 
+    @GetMapping("/client")
+    public String to(Model model) {
+        List<Product> products=productService.getAllProducts();
+        model.addAttribute("products", products);
+        return "listProductsClient";
+    }
 
     @GetMapping("/update/{productId}")
     public String updateProduct(@PathVariable String productId, Model model) {
@@ -76,11 +83,17 @@ public class ProductController {
         }
     }
 
-    @GetMapping("/delete/{productId}")
-    public String deleteProduct(@PathVariable String productId) {
+
+
+    @DeleteMapping("/delete/{productId}")
+    public String deleteProduct(@PathVariable String productId, Model model) {
         productService.deleteProduct(productId);
-        return "redirect:/api/products";
+        List<Product> products = productService.getAllProducts();
+        model.addAttribute("products", products);
+        return "fragments/productsAdmin :: grid-container"; // Devuelve solo el fragmento de la lista de productos
     }
+
+
 
     @GetMapping("/create")
     public String createProduct(Model model) {
@@ -111,9 +124,6 @@ public class ProductController {
 			return "createProduct";
 		} else {
 			if (!image.isEmpty()) {
-				if (Integer.parseInt(product.getProductId()) > 0 && product.getImage() != null && product.getImage().length() > 0) {
-					uploadImageService.delete(product.getImage());
-				}
 				String uniqueFileName = uploadImageService.copy(image);
 				product.setImage(uniqueFileName);
 			}

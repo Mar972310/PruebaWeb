@@ -13,7 +13,7 @@ public class Product implements Serializable {
 
     @Id
     @Column(name = "ID")
-    private String productId;
+    private String productId ;
     @Column(name = "NAME")
     private String name; 
     @Column(name = "DESCRIPTION")
@@ -30,6 +30,7 @@ public class Product implements Serializable {
     private int discount;
     @Column(name = "TAX")
     private int tax;
+    
     @ManyToOne // Relación Many-to-One con la entidad Category
     @JoinColumn(name = "CATEGORY_ID", referencedColumnName = "ID", nullable = true) // Columna de la llave foránea
     private Category category;
@@ -42,7 +43,7 @@ public class Product implements Serializable {
     }
 
     public Product(String name, String description, String technicalDescription, String image, int price, String coin, int discount, int tax, Category category, Quote quote) {
-        this.productId = UUID.randomUUID().toString();
+        
         this.name = name;
         this.description = description;
         this.technicalDescription = technicalDescription;

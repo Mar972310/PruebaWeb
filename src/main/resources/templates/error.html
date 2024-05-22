@@ -3,6 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Error Page</title>
+    <style>
+        body{
+            margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Jost', sans-serif;
+    flex-direction: column;
+    background: #E3E6EC; 
+        }
+    </style>
 </head>
 <body>
 <h1>Something went wrong! </h1>
@@ -10,7 +23,7 @@
 <h1 style="color: red;" th:text="'status: ' + ${status}"/>
 <h1 style="color: red;" th:text="'message: ' + ${message}"/>
 <h2>Our Engineers are on it</h2>
-<a href="/">Go Home</a>
+<a href="/api/quote">Go Home</a>
 
 <br><br><br><br><br>
 <!-- more: https://www.makeuseof.com/custom-error-pages-thymeleaf-spring-boot/ -->

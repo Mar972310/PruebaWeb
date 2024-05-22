@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Productos</title>
+    <!-- Tus estilos CSS -->
+
+
+</head>
+<body>
+    <div class="products-" th:fragment="grid-container" >
+        <div class="grid-container" >
+            <div th:each="product : ${products}" class="registro">
+                    <div class="img_product">
+                        <img th:if="${product.image}" th:src="@{'/uploads/' + ${product.image}}" />
+                        <div class="details">
+                            <div class="details-">
+                                <h4>Descripción: </h4>
+                                <p th:text="${product.description}"></p>
+                                <h4>Descripción técnica: </h4>
+                                <p th:text="${product.technicalDescription}"></p>
+                            </div>
+                           
+                        </div>
+                    </div>
+                    <div class="textInformation">
+                        <p th:text="${product.name}"></p>
+                        <div class="information">
+                            <div class="information_text">
+                                <h4>Desde</h4>
+                                <div class="new-price" th:if="${product.discount > 0}">
+                                    <span>$</span><span th:text="${product.price - (product.price * product.discount / 100)}"></span>
+                                </div>
+                                <div class="current-price" th:unless="${product.discount > 0}">
+                                    <span>$</span><span th:text="${product.price}"></span>
+                                </div>
+                                <div class="old-price" th:if="${product.discount > 0}">
+                                    <s><span>$</span><span th:text="${product.price}"></span></s>
+                                </div>
+                                <div class="old-price" th:if="${product.discount < 1}">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="acciones">
+                                <button class="img_button" th:attr="onclick='window.location.href=\'/products/update/' + ${product.productId} + '\''" type="button">
+                                    <img src="/images/anadir.png">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    
+</body>
+</html>

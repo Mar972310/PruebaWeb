@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 @Service
 public class ProductService {
     private final ProductRepository productRepository;
@@ -18,6 +19,7 @@ public class ProductService {
     }
 
     public Product addProduct(Product product) {
+        product.setProductId(UUID.randomUUID().toString());
         return productRepository.save(product);
     }
 

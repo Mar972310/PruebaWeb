@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<<head>
+    <meta charset="UTF-8">
+    <title>productos</title>
+
+    <link rel="stylesheet" href="/style/styleListProductsClient.css">
+    <script src="https://kit.fontawesome.com/8df01ba1bf.js" crossorigin="anonymous"></script>
+</head>
+<body>
+        <div class="exit">
+            <header>
+                <div class="left-column">
+                    <img src="/images/cerrar-sesion.png" onclick="volver()">
+                </div>
+                <div class="center-column">
+                    <img src="/images/LogoApp.jpeg">
+                </div>
+
+                <div class="right-column" onmouseover="mostrarContenedor()" onmouseout="ocultarContenedor()">
+                    <img src="/images/verificar.png">
+                </div>
+               
+            </header>
+        </div>
+
+        <div class="card" id="card">
+            <li>dfgdf</li>
+            <li>ddfgdf</li>
+            <li>erwer</li>
+            <li>rtyry</li>
+        </div>
+        <div class="jij">
+            <div class="top">
+                <div class="category">
+                    <button class="img_button scroll-left-button" type="button" method="get">
+                        <img src="/images/flecha-izquierda.png">
+                    </button>
+                    <div class="grid-button">
+                        <div th:each="category: ${categories}" >
+                            <button class="buttonCategory" th:attr="data-category-id=${category.categoryId}" type="button">
+                                <span th:text="${category.name}"></span>
+                            </button>
+                        </div>
+                    </div>
+                    <button class="img_button scroll-right-button" type="button" method="get">
+                        <img src="/images/flecha-correcta.png">
+                    </button>
+                </div>
+                <div class="search">
+                    <div class="buscar">
+                        <input type="text" placeholder="Buscar" required />
+                        <div class="btn">
+                          <i class="imgSearch">
+                            <img src="/images/search.png">
+                          </i>
+                        </div>
+                      </div>
+                </div>
+    
+            </div>
+                
+    
+            <div class="products" th:include="fragments/productClient :: grid-container">
+                
+            </div>
+        </div>
+        
+        
+        <script>
+            function volver() {
+                // Redirige a la página especificada al hacer clic en la imagen
+                window.location.href = '/api/user';
+            }
+            function crear() {
+                // Redirige a la página especificada al hacer clic en la imagen
+                window.location.href = '/api/products/create';
+            }
+                        
+            function mostrarContenedor() {
+            var contenedor = document.getElementById("card");
+            contenedor.style.display = "block";
+            }
+
+            function ocultarContenedor() {
+                var contenedor = document.getElementById("card");
+                var area = document.getElementById("right-column");
+                var contenedorRect = contenedor.getBoundingClientRect();
+                var areaRect = area.getBoundingClientRect();
+                
+                // Verifica si el cursor está dentro del contenedor
+                if (
+                    event.clientX >= contenedorRect.left &&
+                    event.clientX <= contenedorRect.right &&
+                    event.clientY >= contenedorRect.top &&
+                    event.clientY <= contenedorRect.bottom
+                ) {
+                    return; // No ocultar si el cursor está sobre el contenedor
+                }
+
+                // Verifica si el cursor está dentro del área original
+                if (
+                    event.clientX >= areaRect.left &&
+                    event.clientX <= areaRect.right &&
+                    event.clientY >= areaRect.top &&
+                    event.clientY <= areaRect.bottom
+                ) {
+                    return; // No ocultar si el cursor está sobre el área original
+                }
+
+                // Si el cursor no está ni en el área original ni en el contenedor, oculta el contenedor
+                contenedor.style.display = "none";
+            }
+        </script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $(".scroll-left-button").click(function() {
+                    // Desplaza el contenido hacia la izquierda
+                    $(".grid-button").animate({
+                        scrollLeft: "-=100px" // Puedes ajustar la cantidad de desplazamiento según tu diseño
+                    }, "fast");
+                });
+        
+                $(".scroll-right-button").click(function() {
+                    // Desplaza el contenido hacia la derecha
+                    $(".grid-button").animate({
+                        scrollLeft: "+=100px" // Puedes ajustar la cantidad de desplazamiento según tu diseño
+                    }, "fast");
+                });
+        
+                // Desactiva el scroll horizontal predeterminado del ratón
+                $(".grid-button").on("wheel", function(e) {
+                    e.preventDefault();
+                    $(".grid-button").stop().animate({
+                        scrollLeft: $(".grid-button").scrollLeft() + (e.originalEvent.deltaY * 30)
+                    }, 5);
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function() {
+                $(".grid-button button").click(function() {
+                    // Elimina la clase 'active-button' de todos los botones
+                    $(".grid-button button").removeClass("active-button");
+                    
+                    // Agrega la clase 'active-button' al botón presionado
+                    $(this).addClass("active-button");
+                });
+            });
+
+        </script>
+        <script>
+            $(document).ready(function(){
+                $('.buttonCategory').click(function(){
+                    var categoryId = $(this).data('category-id');
+                    console.log(categoryId);
+                    $.ajax({
+                        url: '/api/quote/'+categoryId, // La URL de tu endpoint que devuelve el fragmento actualizado
+                        method: 'GET',
+                        success: function(data) {
+                            $('.products').empty().html(data);
+                        },
+                        error: function() {
+                            alert('Error al actualizar los elementos');
+                        }
+                    });
+                });
+            });
+        </script>
+                    
+        
+    </body>
+</html>

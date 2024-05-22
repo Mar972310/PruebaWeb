@@ -7,44 +7,62 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="main">
-        <input type="checkbox" id="chk" aria-hidden="true">
-        
-        <div class="usuario">
-            <form>
-                <label for="chk" aria-hidden="true">Datos del vehículo</label>
-                <select name="marca" required="">
-                    <option value="">Selecciona una marca</option>
-                    <option value="Toyota">Toyota</option>
-                    <option value="Honda">Honda</option>
-                    <option value="Ford">Ford</option>
-                    <!-- Agrega más opciones según sea necesario -->
-                </select>
-                <select name="modelo" required="">
-                    <option value="">Selecciona un modelo</option>
-                    <option value="Toyota">Toyota</option>
-                    <option value="Honda">Honda</option>
-                    <option value="Ford">Ford</option>
-                    <!-- Agrega más opciones según sea necesario -->
-                </select>
-                <select name="modelo" required="">
-                    <option value="">Selecciona el cilindraje</option>
-                    <option value="Toyota">1</option>
-                    <option value="Honda">2</option>
-                    <option value="Ford">3</option>
-                    <!-- Agrega más opciones según sea necesario -->
-                </select>
-                <button>Cotizar Servicios</button>
-            </form>
-        </div>
-        <div class="administrador">
-            <form>
-                <label for="chk" aria-hidden="true">Bienvenido administrador</label>
-                <input type="email" name="email_admin" placeholder="Email" required="" >
-                <input type="password" name="password_admin" placeholder="Contraseña" required="" >
-                <button>Ingresar</button>
-            </form>
+    <header>
+        <img src="/images/LogoApp.jpeg">
+    </header>
+
+    <div class="container">
+        <div class="main">
+            <input type="checkbox" id="chk" aria-hidden="true">
+            <div class="usuario">
+                <form>
+                    <label for="chk" aria-hidden="true">Datos del vehículo</label>
+                    <select name="marca" required="">
+                        <option value="">Selecciona una marca</option>
+                        <option value="Toyota">Toyota</option>
+                        <option value="Honda">Honda</option>
+                        <option value="Ford">Ford</option>
+                    </select>
+                    <select name="modelo" required="" >
+                        <option value="">Selecciona un modelo</option>
+                        <option >
+                            <div class="modelo-">
+                                <img src="/images/anadir.png">
+                                <p>Toyota</p>
+                            </div>
+                            
+                        </option>
+                        <option value="Honda">Honda</option>
+                        <option value="Ford">Ford</option>
+                    </select>
+                    <select name="modelo" required="">
+                        <option value="">Selecciona el cilindraje</option>
+                        <option value="Toyota">1</option>
+                        <option value="Honda">2</option>
+                        <option value="Ford">3</option>
+                    </select>
+                    <button onclick="goClient()">Cotizar Servicios</button>
+                </form>
+            </div>
+            <div class="administrador">
+                <form>
+                    <label for="chk" aria-hidden="true">Bienvenido administrador</label>
+                    <div class="input">
+                        <input type="email" name="email_admin" placeholder="Email" required="" >
+                        <input type="password" name="password_admin" placeholder="Contraseña" required="" >
+                    </div>
+                    <button onclick="goAdmin()">Ingresar</button>
+                </form>
+            </div>
         </div>
     </div>
+    <script>
+        function goAdmin() {
+            window.location.href = '/html/functionAdmin.html';
+        }
+        function goClient() {
+            window.location.href = '/api/quote';
+        }
+    </script>
 </body>
 </html>

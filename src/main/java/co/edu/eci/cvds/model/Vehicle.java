@@ -16,8 +16,12 @@ public class Vehicle implements Serializable {
     @Column(name = "ID")
     private String vehicleId;
 
-    @Column(name = "BRAND")
-    private String brand;
+    @Column(name = "IMAGE")
+    private String image;
+
+    @ManyToOne // Relación Many-to-One con la entidad Brand
+    @JoinColumn(name = "BRAND_ID", referencedColumnName = "ID", nullable = true)
+    private Brand brand;
 
     @Column(name = "MODEL")
     private String model;
@@ -25,18 +29,16 @@ public class Vehicle implements Serializable {
     @Column(name = "VEHICLE_YEAR")
     private int year;
 
-    @Column(name = "CYLINDER_CAPACITY")
-    private int cylinderCapacity;
+    @Column(name = "CYLINDER_CAPACITY",nullable = true)
+    private Integer cylinderCapacity;
 
-    @OneToMany(mappedBy = "vehicle") // Relación One-to-Many con la entidad Quote
-    private List<Quote> quotes;
 
     public Vehicle() {
     }
 
-    public Vehicle(String brand, String model, int year, int cylinderCapacity) {
+    public Vehicle(Brand brand,String model, int year, int cylinderCapacity) {
         this.vehicleId = UUID.randomUUID().toString();
-        this.brand = brand;
+        this.brand =brand;
         this.model = model;
         this.year = year;
         this.cylinderCapacity = cylinderCapacity;
@@ -44,20 +46,28 @@ public class Vehicle implements Serializable {
 
     // Getters y setters
 
-    public String getId() {
+    public String getVehicleId() {
         return vehicleId;
     }
 
-    public void setId(String vehicleId) {
+    public void setVehicleId(String vehicleId) {
         this.vehicleId = vehicleId;
     }
 
-    public String getBrand() {
+    public Brand getBrand() {
         return brand;
     }
 
-    public void setBrand(String brand) {
+    public void setBrand(Brand brand) {
         this.brand = brand;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getModel() {
@@ -76,7 +86,7 @@ public class Vehicle implements Serializable {
         this.year = year;
     }
 
-    public int getCylinderCapacity() {
+    public Integer getCylinderCapacity() {
         return cylinderCapacity;
     }
 
@@ -84,11 +94,4 @@ public class Vehicle implements Serializable {
         this.cylinderCapacity = cylinderCapacity;
     }
 
-    public List<Quote> getQuotes() {
-        return quotes;
-    }
-
-    public void setQuotes(List<Quote> quotes) {
-        this.quotes = quotes;
-    }
 }
