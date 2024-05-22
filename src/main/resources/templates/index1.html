@@ -31,8 +31,8 @@
                             <p></p>
                         </div>
                     </div>
-                    <div class="acciones" name="${product.productId}">
-                        <button class="img_button "  th:attr="onclick='window.location.href=\'/api/products/update/' + ${product.productId} + '\''" type="button" method="get">
+                    <div class="acciones" name="${product.productId}" name="${quote.quoteId}">
+                        <button class="img_button "  th:attr="onclick='window.location.href=\'/api/products/update/' + ${quote.quoteId} +${product.productId} + '\''" type="button" method="get">
                             <img src="/images/anadir.png">
                         </button>
                     </div>

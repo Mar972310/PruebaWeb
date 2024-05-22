@@ -1,6 +1,7 @@
 package co.edu.eci.cvds.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -26,7 +27,7 @@ public class Quote implements Serializable {
     private Vehicle vehicle;
 
     @OneToMany(mappedBy = "quote") // Relación One-to-Many con la entidad Product
-    private List<Product> products;
+    private List<Product> products = new ArrayList<Product>();
 
     public Quote() {
     }
@@ -35,6 +36,7 @@ public class Quote implements Serializable {
         this.estate = estate;
         this.price = price;
         this.vehicle = vehicle;
+       
     }
 
     // Getters y setters
@@ -75,7 +77,9 @@ public class Quote implements Serializable {
         return products;
     }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
+    public void setProducts(Product product) {
+        this.products.add(product);
     }
+
+
 }

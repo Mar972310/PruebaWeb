@@ -85,7 +85,7 @@ button.verificar:hover {
   display: flex;
   justify-content: center;
   flex-direction: row;
-  width: 50vw;
+  width: 70%;
   height: 8vw;
   align-items: center;
 }

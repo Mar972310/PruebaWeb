@@ -44,12 +44,13 @@ public class QuoteController {
         return "listQuotes";
     }
 
+
+
     @GetMapping("")
-    public String informationClient(Model model,@RequestParam("brand") String brand,@RequestParam("year") int year, @RequestParam("cylinder") Integer cylinder,
-            @RequestParam("model") String modelv) {
+    public String informationClient(Model model, @RequestParam("vehicleId") String vehicleId) {
                 Quote quote= new Quote();
-                //Vehicle vehicleSelect = vehicleService.findVehicle(modelv, year, cylinder);
-                quoteService.addQuote(quote);
+                Vehicle vehicleSelect = vehicleService.getVehicle(vehicleId);
+                quoteService.addQuote(quote,vehicleSelect);
                 List<Product> products = productService.getAllProducts();
         List<Category> categories = categoryService.getAllCategories();
         model.addAttribute("products",products);
@@ -79,4 +80,21 @@ public class QuoteController {
         }
     }  
     
+    @PostMapping("/update/{quoteId}/{productId}")
+    public String updateQuote(@PathVariable String quoteId, @PathVariable String productId, Model model) {
+        Product product = productService.getProduct(productId);
+        Quote quote = quoteService.getQuote(quoteId);
+        quoteService.addProducts(quote, product);
+        List<Product> products = quote.getProducts();
+        model.addAttribute("products", products);
+        model.addAttribute("quote", quote);
+        return "fragments/shopCar :: grid-container";
+    }
+
+    @PostMapping("/update/{quoteId}")
+    public void stateUpdate(@PathVariable String quoteId, Model model) {
+        quoteService.endQuote(quoteId);
+    }
+
+
 }
