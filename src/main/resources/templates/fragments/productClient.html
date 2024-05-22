@@ -42,7 +42,7 @@
                                 </div>
                             </div>
                             <div class="acciones">
-                                <button class="img_button" th:attr="onclick='window.location.href=\'/products/update/' + ${product.productId} + '\''" type="button">
+                                <button class="img_button agregar" th:attr="data-product-id=${product.productId}" type="button">
                                     <img src="/images/anadir.png">
                                 </button>
                             </div>

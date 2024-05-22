@@ -17,19 +17,13 @@
                     <img src="/images/LogoApp.jpeg">
                 </div>
 
-                <div class="right-column" onmouseover="mostrarContenedor()" onmouseout="ocultarContenedor()">
-                    <img src="/images/verificar.png">
+                <div class="right-column" th:attr="data-quote-id=${quote.id}" >
+                    <img src="/images/verificar-2.png" onclick="toggleSidebar()">
                 </div>
                
             </header>
         </div>
 
-        <div class="card" id="card">
-            <li>dfgdf</li>
-            <li>ddfgdf</li>
-            <li>erwer</li>
-            <li>rtyry</li>
-        </div>
         <div class="jij">
             <div class="top">
                 <div class="category">
@@ -62,7 +56,9 @@
                 
     
             <div class="products" th:include="fragments/productClient :: grid-container">
-                
+            </div>
+
+            <div id="sidebar" class="sidebar" th:include="fragments/shopCar :: grid-container" >
             </div>
         </div>
         
@@ -72,103 +68,73 @@
                 // Redirige a la página especificada al hacer clic en la imagen
                 window.location.href = '/api/user';
             }
-            function crear() {
-                // Redirige a la página especificada al hacer clic en la imagen
-                window.location.href = '/api/products/create';
-            }
-                        
-            function mostrarContenedor() {
-            var contenedor = document.getElementById("card");
-            contenedor.style.display = "block";
-            }
+            function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const jij = document.querySelector('.jij');
+            
+            sidebar.classList.toggle('active');
+            jij.classList.toggle('shift-left');
+        }
 
-            function ocultarContenedor() {
-                var contenedor = document.getElementById("card");
-                var area = document.getElementById("right-column");
-                var contenedorRect = contenedor.getBoundingClientRect();
-                var areaRect = area.getBoundingClientRect();
-                
-                // Verifica si el cursor está dentro del contenedor
-                if (
-                    event.clientX >= contenedorRect.left &&
-                    event.clientX <= contenedorRect.right &&
-                    event.clientY >= contenedorRect.top &&
-                    event.clientY <= contenedorRect.bottom
-                ) {
-                    return; // No ocultar si el cursor está sobre el contenedor
-                }
-
-                // Verifica si el cursor está dentro del área original
-                if (
-                    event.clientX >= areaRect.left &&
-                    event.clientX <= areaRect.right &&
-                    event.clientY >= areaRect.top &&
-                    event.clientY <= areaRect.bottom
-                ) {
-                    return; // No ocultar si el cursor está sobre el área original
-                }
-
-                // Si el cursor no está ni en el área original ni en el contenedor, oculta el contenedor
-                contenedor.style.display = "none";
-            }
-        </script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script>
-            $(document).ready(function() {
-                $(".scroll-left-button").click(function() {
-                    // Desplaza el contenido hacia la izquierda
-                    $(".grid-button").animate({
-                        scrollLeft: "-=100px" // Puedes ajustar la cantidad de desplazamiento según tu diseño
-                    }, "fast");
-                });
-        
-                $(".scroll-right-button").click(function() {
-                    // Desplaza el contenido hacia la derecha
-                    $(".grid-button").animate({
-                        scrollLeft: "+=100px" // Puedes ajustar la cantidad de desplazamiento según tu diseño
-                    }, "fast");
-                });
-        
-                // Desactiva el scroll horizontal predeterminado del ratón
-                $(".grid-button").on("wheel", function(e) {
-                    e.preventDefault();
-                    $(".grid-button").stop().animate({
-                        scrollLeft: $(".grid-button").scrollLeft() + (e.originalEvent.deltaY * 30)
-                    }, 5);
-                });
-            });
-        </script>
-        <script>
-            $(document).ready(function() {
-                $(".grid-button button").click(function() {
-                    // Elimina la clase 'active-button' de todos los botones
-                    $(".grid-button button").removeClass("active-button");
-                    
-                    // Agrega la clase 'active-button' al botón presionado
-                    $(this).addClass("active-button");
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('.scroll-left-button').addEventListener('click', function() {
+                document.querySelector('.grid-button').scrollBy({
+                    left: -100,
+                    behavior: 'smooth'
                 });
             });
 
-        </script>
-        <script>
+            document.querySelector('.scroll-right-button').addEventListener('click', function() {
+                document.querySelector('.grid-button').scrollBy({
+                    left: 100,
+                    behavior: 'smooth'
+                });
+            });
+
+            document.querySelectorAll('.grid-button button').forEach(button => {
+                button.addEventListener('click', function() {
+                    document.querySelectorAll('.grid-button button').forEach(btn => btn.classList.remove('active-button'));
+                    this.classList.add('active-button');
+                });
+            });
+
+            document.querySelectorAll('.buttonCategory').forEach(button => {
+                button.addEventListener('click', function() {
+                    const categoryId = this.getAttribute('data-category-id');
+                    fetch(`/api/quote/${categoryId}`)
+                        .then(response => response.text())
+                        .then(data => {
+                            document.querySelector('.products').innerHTML = data;
+                        })
+                        .catch(() => {
+                            alert('Error al actualizar los elementos');
+                        });
+                });
+            });
+            
             $(document).ready(function(){
-                $('.buttonCategory').click(function(){
-                    var categoryId = $(this).data('category-id');
-                    console.log(categoryId);
+            // Delegar el evento de clic en el contenedor padre
+            $('.products').on('click', '.agregar', function(){
+                var productId = $(this).data('product-id'); 
+                var quoteId = $('.right-column').data('quote-id');
+                console.log(quoteId);
                     $.ajax({
-                        url: '/api/quote/'+categoryId, // La URL de tu endpoint que devuelve el fragmento actualizado
-                        method: 'GET',
+                        url: '/api/quote/update/'+quoteId+'/' + productId,
+                        method: 'POST',
                         success: function(data) {
-                            $('.products').empty().html(data);
+                     // Verifica qué contiene data
+                            $('.sidebar').empty().html(data);
                         },
                         error: function() {
+                            console.log('Error al realizar la solicitud AJAX.');
                             alert('Error al actualizar los elementos');
                         }
                     });
                 });
             });
+        });
         </script>
-                    
-        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     </body>
 </html>

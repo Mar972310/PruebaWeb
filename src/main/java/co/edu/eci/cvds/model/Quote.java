@@ -26,8 +26,8 @@ public class Quote implements Serializable {
     @JoinColumn(name = "VEHICLE_ID", referencedColumnName = "ID", nullable = true) // Columna de la llave foránea
     private Vehicle vehicle;
 
-    @OneToMany(mappedBy = "quote") // Relación One-to-Many con la entidad Product
-    private List<Product> products = new ArrayList<Product>();
+    @OneToMany(mappedBy = "quote", cascade = CascadeType.ALL, orphanRemoval = true) // Añadir cascade y orphanRemoval
+    private List<Product> products = new ArrayList<>();
 
     public Quote() {
     }
@@ -36,7 +36,6 @@ public class Quote implements Serializable {
         this.estate = estate;
         this.price = price;
         this.vehicle = vehicle;
-       
     }
 
     // Getters y setters
@@ -77,9 +76,15 @@ public class Quote implements Serializable {
         return products;
     }
 
-    public void setProducts(Product product) {
+    public void addProduct(Product product) {
         this.products.add(product);
+        product.setQuote(this); // Asegurar la relación bidireccional
     }
 
-
+    public void setProducts(List<Product> products) {
+        this.products = products;
+        for (Product product : products) {
+            product.setQuote(this); // Asegurar la relación bidireccional
+        }
+    }
 }

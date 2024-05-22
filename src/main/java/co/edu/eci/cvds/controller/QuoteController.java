@@ -47,15 +47,17 @@ public class QuoteController {
 
     @GetMapping("")
     public String informationClient(Model model, @RequestParam("vehicleId") String vehicleId) {
-                Quote quote= new Quote();
-                Vehicle vehicleSelect = vehicleService.getVehicle(vehicleId);
-                quoteService.addQuote(quote,vehicleSelect);
-                List<Product> products = productService.getAllProducts();
+        Quote quote= new Quote();
+        Vehicle vehicleSelect = vehicleService.getVehicle(vehicleId);
+        quoteService.addQuote(quote,vehicleSelect);
+        List<Product> productsSelect = new ArrayList<>();
+        List<Product> products = productService.getAllProducts();
         List<Category> categories = categoryService.getAllCategories();
         model.addAttribute("products",products);
+        model.addAttribute("productsSelect",productsSelect);
         model.addAttribute("categories",categories);
+        model.addAttribute("quote",quote);
         return "listProductsClient";
-
     }
 
 
@@ -85,10 +87,26 @@ public class QuoteController {
         Quote quote = quoteService.getQuote(quoteId);
         quoteService.addProducts(quote, product);
         List<Product> products = quote.getProducts();
-        model.addAttribute("products", products);
-        model.addAttribute("quote", quote);
+        int count = 0;
+        for (Product p : products) {
+            System.out.println(count+1);
+            System.out.println("Producto: " + p.getName() + ", Precio: " + p.getPrice());
+        }
+        model.addAttribute("productsSelect", products);
+        model.addAttribute("quote",quote);
         return "fragments/shopCar :: grid-container";
     }
+
+    @GetMapping("/view/{quoteId}")
+    public String viewQuote(@PathVariable String quoteId,Model model) {
+        Quote quote = quoteService.getQuote(quoteId);
+        List<Product> products = quote.getProducts();
+        model.addAttribute("productsSelect", products);
+        model.addAttribute("quote",quote);
+        return "fragments/shopCar :: grid-container";
+    }
+
+    
 
     @PostMapping("/update/{quoteId}")
     public void stateUpdate(@PathVariable String quoteId, Model model) {

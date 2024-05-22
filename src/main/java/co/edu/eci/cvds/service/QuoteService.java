@@ -24,19 +24,19 @@ public class QuoteService {
         quote.setEstate("Creado");
         quote.setVehicle(vehicle);
         quote.setPrice(0);
-        quote.setProducts(null);
         return quoteRepository.save(quote);
     }
 
-    public Quote addProducts(Quote quote, Product product){
-        quote.setProducts(product);
+    public Quote addProducts(Quote quote, Product product) {
+        quote.addProduct(product);
         quote.setEstate("En proceso");
         int newPrice = 0;
         for (Product i : quote.getProducts()) {
             newPrice += i.getPrice();
         }
         quote.setPrice(newPrice);
-        return quoteRepository.save(quote);
+        quoteRepository.save(quote);
+        return quote;
     }
 
     public Quote endQuote(String quoteId){
