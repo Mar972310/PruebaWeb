@@ -91,6 +91,17 @@ public class QuoteController {
         return "fragments/shopCar :: grid-container";
     }
 
+    @PostMapping("/delete/{quoteId}/{productId}")
+    public String deleteQuote(@PathVariable String quoteId, @PathVariable String productId, Model model) {
+        Product product = productService.getProduct(productId);
+        Quote quote = quoteService.getQuote(quoteId);
+        quoteService.deleteProducts(quote, product);
+        List<Product> products = quote.getProducts();
+        model.addAttribute("products", products);
+        model.addAttribute("quote", quote);
+        return "fragments/shopCar :: grid-container";
+    }
+
     @PostMapping("/update/{quoteId}")
     public void stateUpdate(@PathVariable String quoteId, Model model) {
         quoteService.endQuote(quoteId);
