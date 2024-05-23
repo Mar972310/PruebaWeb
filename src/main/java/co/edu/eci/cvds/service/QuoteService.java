@@ -39,14 +39,20 @@ public class QuoteService {
         return quote;
     }
 
-    public Quote deleteProducts(Quote quote, Product product) {
-        double priceProduct = product.getPrice();
-        quote.deleteProduct(product,priceProduct);
-        quoteRepository.save(quote);
-        return quote;
+
+
+    public Quote deleteProducts(Quote quote, Product product){
+        quote.deleteProducts(product);
+        quote.setEstate("En proceso");
+        int newPrice = 0;
+        for (Product i : quote.getProducts()) {
+            newPrice += i.getPrice();
+        }
+        quote.setPrice(newPrice);
+        return quoteRepository.save(quote);
     }
 
-    public Quote endQuote(String quoteId, String estate){
+    public Quote endQuote(String quoteId,String estate){
         Quote quote = getQuote(quoteId);
         quote.setEstate(estate);
         return quoteRepository.save(quote);

@@ -135,30 +135,36 @@
         });
 
         $(document).ready(function(){
-        $('.products').on('click', '.delete', function(){
-            var productId = $(this).data('product-id'); 
-            var quoteId = $('.right-column').data('quote-id');
-                $.ajax({
-                    url: '/api/quote/delete/'+quoteId+'/'+ productId,
-                    method: 'DELETE',
-                    success: function(data) {
-                        $('.sidebar').empty().html(data);
-                    },
-                    error: function() {
-                        alert('Error al actualizar los productos del carrito');
-                    }
+            $('.sidebar').on('click', '.delete', function(){
+                    var productId = $(this).data('product-id'); 
+                    var quoteId = $('.right-column').data('quote-id');
+                    $.ajax({
+                        url: '/api/quote/delete/' + quoteId + '/' + productId,
+                        method: 'DELETE',
+                        success: function(data) {
+                            $('.sidebar').empty().html(data);
+                        },
+                        error: function() {
+                            alert('Error al actualizar los productos del carrito');
+                        }
+                    });
                 });
             });
-        });
+        
 
         function view() {
             var quoteId = $('.right-column').data('quote-id');
-            window.location.href = '/api/quote/view/'+quoteId;
+            window.location.href = '/api/quote/viewFinal/'+quoteId;
+        }
+
+        function date() {
+            var quoteId = $('.right-column').data('quote-id');
+            window.location.href = '/html/SheduleDate.html';
         }
 
         function whatsApp() {
             var quoteId = $('.right-column').data('quote-id');
-            window.location.href = 'https://api.whatsapp.com/send/?phone=573229118752&text=Hola+%2ATopGear+Bogot%C3%A1%2A.+Necesito+que+me+ayuden+con+esta+cotizaci%C3%B3n.%0Ahttp://192.168.1.106:8080/api/quote/view/'+quoteId;
+            window.location.href = 'https://api.whatsapp.com/send/?phone=573229118752&text=Hola+%2ATopGear+Bogot%C3%A1%2A.+Necesito+que+me+ayuden+con+esta+cotizaci%C3%B3n.%0Ahttp://localhost:8080/api/quote/viewFinal/'+quoteId;
         }
         
         </script>

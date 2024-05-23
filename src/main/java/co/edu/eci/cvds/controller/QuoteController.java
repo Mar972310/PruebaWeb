@@ -118,6 +118,7 @@ public class QuoteController {
         return "fragments/shopCar :: grid-container";
     }
 
+
     @PostMapping("/update/{quoteId}")
 public String stateUpdate(@PathVariable String quoteId, @RequestParam("estate") String estate, Model model) {
     quoteService.endQuote(quoteId, estate);
@@ -135,6 +136,17 @@ public String stateUpdate(@PathVariable String quoteId, @RequestParam("estate") 
         model.addAttribute("quote",quote);
         model.addAttribute("vehicle",vehicle);
         return "detailsQuotes";
+    }
+
+    @GetMapping("/viewFinal/{quoteId}")
+    public String viewFinalQuote(@PathVariable String quoteId, Model model){
+        Quote quote = quoteService.getQuote(quoteId);
+        List<Product> products = quote.getProducts();
+        Vehicle vehicle = quote.getVehicle();
+        model.addAttribute("productsSelect", products);
+        model.addAttribute("quote",quote);
+        model.addAttribute("vehicle",vehicle);
+        return "viewQuote";
     }
 
     @GetMapping("/update/{quoteId}")

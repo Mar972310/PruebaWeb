@@ -57,6 +57,9 @@ public class Product implements Serializable {
     }
 
     // Getters y setters
+    public double getPriceWithDiscount() {
+        return price-(price*discount);
+    }
 
     public String getProductId() {
         return productId;
