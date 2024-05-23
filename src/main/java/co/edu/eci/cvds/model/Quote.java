@@ -81,5 +81,10 @@ public class Quote implements Serializable {
         this.products.add(product);
     }
 
+    public void deleteProducts(Product product) {
+        this.products.remove(product);
+    }
+    
+
 
 }
