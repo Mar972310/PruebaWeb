@@ -81,6 +81,11 @@ public class Quote implements Serializable {
         product.setQuote(this); // Asegurar la relación bidireccional
     }
 
+    public void deleteProduct(Product product, double price){
+        products.remove(product);
+        this.price -= price;
+    }
+
     public void setProducts(List<Product> products) {
         this.products = products;
         for (Product product : products) {

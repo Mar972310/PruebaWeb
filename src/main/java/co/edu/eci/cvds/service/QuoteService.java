@@ -39,6 +39,13 @@ public class QuoteService {
         return quote;
     }
 
+    public Quote deleteProducts(Quote quote, Product product) {
+        double priceProduct = product.getPrice();
+        quote.deleteProduct(product,priceProduct);
+        quoteRepository.save(quote);
+        return quote;
+    }
+
     public Quote endQuote(String quoteId){
         Quote quote = getQuote(quoteId);
         quote.setEstate("En proceso");

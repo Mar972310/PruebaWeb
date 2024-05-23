@@ -52,7 +52,12 @@
                                 <div class="old-prices" th:if="${product.discount > 0}">
                                     <s><span>$</span><span th:text="${product.price}"></span></s>
                                 </div>
+
+                                
                             </div>
+                            <button class="delete" th:attr="data-product-id=${product.productId}" type="button">
+                                <img src="/images/basura.png">
+                            </button>
                         </div>
                         <div class="lines"></div>
                     </div>
@@ -65,8 +70,8 @@
                     </div>
                     <div class="whats">
                         <img src="/images/whatsapp.png" onclick="whatsApp()">
-                    </div>
-                        
+                    </div>  
+                    <p th:text="${quote.price}"></p>
                 </div>
             </div>
         </div>

@@ -575,7 +575,7 @@ button:hover{
 .productSelect{
     height: 12vh;
     width: 26vw;
-    padding: 0;
+    padding: 1vh;
     display: flex;
     gap: 5px;
     flex-direction: row;
@@ -585,9 +585,23 @@ button:hover{
     font-size: 1em;
 }
 
+.delete{
+    height: 6vh;
+    width: 6vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.delete img{
+    height: 100%;
+    width: 100%;
+}
+
 .textName{
     height: 12vh;
-    width: 12vw;
+    width: 11vw;
     padding: 0;
     display: flex;
     justify-content: flex-start;
