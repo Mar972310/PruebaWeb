@@ -9,7 +9,7 @@
     <div class="sidebar-" th:fragment="grid-container">
         <div class="sidebar-content">
             <div class="car-top">
-                <img src="/images/x.png">
+                <img src="/images/x.png" onclick="toggleSidebar()">
                 <div class="text">
                     <h3>Tu carrito</h3>
                 </div>
@@ -22,38 +22,52 @@
                 <img src="/images/carro-vacio-1.png" alt="Carrito vacío">
                 <p>Agrega productos para verlos aquí</p>
                 <div class="button-car">
-                    <button type="button">Elegir productos y servicios</button>
+                    <button type="button" onclick="toggleSidebar()">Elegir productos y servicios</button>
                 </div>
             </div>
 
             <div th:if="${!#lists.isEmpty(productsSelect)}" class="productss">
-                <h2>Productos y servicios</h2>
+                <div class="ti">
+                    <h2>Productos y servicios</h2>
+                </div>
+                
                 <!-- Iterar sobre los productos y mostrar cada uno -->
-                <li th:each="product : ${productsSelect}">
-                    <div class="productSelect">
-                        <div class="imageP">
-                            <img th:if="${product.image}" th:src="@{'/uploads/' + ${product.image}}" /> 
+                <div  class="informationPro" >
+                    <div  th:each="product : ${productsSelect}">
+                        <div class="productSelect">
+                            <div class="imageP">
+                                <img th:if="${product.image}" th:src="@{'/uploads/' + ${product.image}}" /> 
+                            </div>
+                            <div class="textName">
+                                <p th:text="${product.name}"/>
+                            </div>
+                            
+                            <div class="prices">
+                                <div class="new-prices" th:if="${product.discount > 0}">
+                                    <span>$</span><span th:text="${product.price - (product.price * product.discount / 100)}"></span>
+                                </div>
+                                <div class="current-prices" th:unless="${product.discount > 0}">
+                                    <span>$</span><span th:text="${product.price}"></span>
+                                </div>
+                                <div class="old-prices" th:if="${product.discount > 0}">
+                                    <s><span>$</span><span th:text="${product.price}"></span></s>
+                                </div>
+                            </div>
                         </div>
-                        <div class="textName">
-                            <h5 th:text="${product.name}">hhghghjhgghj</h5>
-                        </div>
-                        
-                        <div class="prices">
-                            <div class="new-prices" th:if="${product.discount > 0}">
-                                <span>$</span><span th:text="${product.price - (product.price * product.discount / 100)}"></span>
-                            </div>
-                            <div class="current-prices" th:unless="${product.discount > 0}">
-                                <span>$</span><span th:text="${product.price}"></span>
-                            </div>
-                            <div class="old-prices" th:if="${product.discount > 0}">
-                                <s><span>$</span><span th:text="${product.price}"></span></s>
-                            </div>
-                            <div class="old-prices" th:if="${product.discount < 1}">
-                                <p></p>
-                            </div>
-                        </div>
+                        <div class="lines"></div>
                     </div>
-                </li>
+                   
+                </div>
+                <div class="actions">
+                    <div class="accioness">
+                        <button type="button" onclick="view()">Ver cotización</button>
+                        <button type="button" >Agendar cita</button>
+                    </div>
+                    <div class="whats">
+                        <img src="/images/whatsapp.png" onclick="whatsApp()">
+                    </div>
+                        
+                </div>
             </div>
         </div>
     </div>

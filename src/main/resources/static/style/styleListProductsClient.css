@@ -416,10 +416,9 @@ header {
     box-shadow: 0px 0px 10px 0px #ffd02852;
     color:#0D131A;
     transition: right 0.3s ease;
-    z-index: 9999934563456;
-    overflow-y: auto;
+    z-index: 9999999999999;
+    overflow-y: hidden;
     border-radius: 20px;
-    
 }
 
 .sidebar-content {
@@ -447,6 +446,7 @@ header {
     font-size: 4vh;
     padding-top: 1vh;
     gap: 2.5vw;
+
 }
 
 .text{
@@ -457,7 +457,6 @@ header {
     justify-content: center;
     align-items: center;
     align-content: center;
-    background-color: #D91F28;
 }
 
 .image-x{
@@ -476,17 +475,18 @@ header {
     display: flex;
     justify-content: center;
     align-content: center;
-    position: absolute;
+
    
-    top: 65vh;
 }
 
 .button-car button{
     border-radius: 20px;
-    height: 100%;
+    height: 10vh;
     border-color: #E3E6EC;
     width: 20vw;
     background-color: #FFCF28;
+    font-size: 3vh;
+    
 }
 
 button:hover{
@@ -494,6 +494,13 @@ button:hover{
     scale: 1.2;
     box-shadow:#ffd028;
 }
+
+.accioness button:hover{
+    background: #D91F28;
+    scale: 1.2;
+    box-shadow:#ffd028;
+}
+
 .car-top img{
     margin-top: 3.4vh;
     margin-left: 10px;
@@ -504,6 +511,7 @@ button:hover{
 .image-null img {
     max-width: 100%; /* Asegura que la imagen no se desborde */
     height: auto; /* Mantiene la proporción de la imagen */
+    font-size: 4vh;
 }
 .line {
     border-top: 1px solid #ccc; /* Estilo para la línea */
@@ -513,8 +521,56 @@ button:hover{
     top:9vh; /* Margen para la línea */
 }
 
+.lines {
+    border-top: 1px solid #ccc; /* Estilo para la línea */
+    width: 100%; /* Ancho completo de la línea */
+    margin: 10px 0;
+}
+
 .productss{
-    height: 1;
+    height: 89vh;
+    width: 27vw;
+    margin-top: 11.5vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.accioness{
+    top: 83vh;
+    position: absolute;
+    gap: 2vh;
+    left:2vw;
+
+}
+
+
+.accioness button{
+
+    border-radius: 20px;
+    height: 7vh;
+    border-color: #E3E6EC;
+    width: 12vw;
+    background-color: #FFCF28;
+    font-size: 3vh;
+    margin-bottom: 15px;
+    margin-left: 3vh;
+
+}
+.ti{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    height: 5vh;
+    top:11.6vh;
+    position: absolute;
+}
+.ti h2{
+    font-size: 4vh;
+    color: #0D131A;
 }
 .productSelect{
     height: 12vh;
@@ -535,10 +591,17 @@ button:hover{
     padding: 0;
     display: flex;
     justify-content: flex-start;
-
     align-content: center;
-    align-items: center;
+    align-items: flex-start;
     font-size:3.5vh;
+}
+
+.informationPro{
+    height: 58vh;
+    overflow-y: auto; 
+    overflow-x: hidden; 
+    top: 19vh;
+    position: absolute;
 }
 
 .prices{
@@ -547,13 +610,15 @@ button:hover{
     display: flex;
     align-items: center;
     align-content: center;
+    justify-content: center;
     flex-direction: column;
 }
 
-.old-prices{
+.old-prices {
     font-size: 3vh;
     width: 100%;
     display: flex;
+    align-content: center;
     justify-content: flex-start;
 }
 
@@ -563,12 +628,13 @@ button:hover{
     justify-content: flex-start;
 
 }
-.current-prices{
+.current-prices {
     font-size: 3.5vh;
     width: 100%;
     display: flex;
     justify-content: flex-start;
 }
+
 
 .imageP {
     height: 10vh;
@@ -592,13 +658,33 @@ button:hover{
 
 .sidebar.active {
     right: 0;
+    
+        
+    
 }
 
+.whats{
+    height: 10vh;
+    width: 10vh;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top:85vh;
+    left: 18vw;
+}
+.whats img{ 
+    width: 100%;
+    height: 100%;
+    
+
+}
 .image-null{
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 80%;
     height: 50%;
-
+    font-size: 3.5vh;
 
 }
 .image-null img{

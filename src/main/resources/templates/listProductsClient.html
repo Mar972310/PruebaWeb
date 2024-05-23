@@ -133,6 +133,18 @@
                 });
             });
         });
+
+
+        function view() {
+            var quoteId = $('.right-column').data('quote-id');
+            window.location.href = '/api/quote/view/'+quoteId;
+        }
+
+        function whatsApp() {
+            var quoteId = $('.right-column').data('quote-id');
+            window.location.href = 'https://api.whatsapp.com/send/?phone=573229118752&text=Hola+%2ATopGear+Bogot%C3%A1%2A.+Necesito+que+me+ayuden+con+esta+cotizaci%C3%B3n.%0Ahttp://192.168.1.106:8080/api/quote/view/'+quoteId;
+        }
+        
         </script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
