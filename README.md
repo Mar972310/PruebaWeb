@@ -60,39 +60,39 @@ Tras la autenticación exitosa, el administrador es redirigido a una página pri
 
 #### 1. Página de Login
 
-![Página de Login](Pictures\Login.png)
+![Página de Login](https://github.com/Richi025/cvds-2024-I-prj-final/blob/dev/Pictures/Login.png)
 
-![Página de Login Admi](Pictures\LoginAdmi.png)
+![Página de Login Admi](https://github.com/Richi025/cvds-2024-I-prj-final/blob/dev/Pictures/LoginAdmi.png)
 
 - *Descripción*: La página de login permite al administrador autenticarse en el sistema mediante un usuario y una contraseña. Esta es la puerta de entrada al módulo de administración privado.
 
 #### 2. Home Page del Administrador
 
-![Home Page](Pictures\HomeAdmi.png)
+![Home Page](https://github.com/Richi025/cvds-2024-I-prj-final/blob/dev/Pictures/HomeAdmi.png)
 
 - *Descripción*: Tras la autenticación exitosa, el administrador es redirigido a la página principal del módulo de administración, donde puede acceder a varias opciones como ver cotizaciones y administrar productos.
 
 #### 3. Ver Cotizaciones
 
-![Ver Cotizaciones](Pictures\Quotes.png)
+![Ver Cotizaciones](https://github.com/Richi025/cvds-2024-I-prj-final/blob/dev/Pictures/Quotes.png)
 
 - *Descripción*: Esta funcionalidad permite al administrador ver todas las cotizaciones en curso, ingresar a cada cotización individualmente, y ver toda la información suministrada por el usuario. Además, el administrador puede cambiar el estado de cada cotización entre: CREADO, EN PROCESO, FINALIZADO y ELIMINADO.
 
 #### 4. Administración de Productos
 
-![Administración de Productos](Pictures\Products.png)
+![Administración de Productos](https://github.com/Richi025/cvds-2024-I-prj-final/blob/dev/Pictures/Products.png)
 
 - *Descripción*: En esta sección, el administrador puede gestionar los productos mediante un CRUD. Cada producto cuenta con información como nombre, descripción breve, descripción técnica, categoría, imagen, valor, moneda, descuento e impuestos.
 
 #### 5. Página de Cotización del Usuario
 
-![Página de Cotización](Pictures\QuoteUsers.png)
+![Página de Cotización](https://github.com/Richi025/cvds-2024-I-prj-final/blob/dev/Pictures/QuoteUsers.png)
 
 - *Descripción*: Los usuarios pueden acceder a una página web pública para realizar cotizaciones de productos disponibles. Pueden agregar y quitar productos de un carrito de compras y ver el detalle completo de la cotización (subtotal, impuestos y total).
 
 #### 6. Finalización de la Cotización
 
-![Finalización de la Cotización](images/quotation_final.png)
+![Finalización de la Cotización](https://github.com/Richi025/cvds-2024-I-prj-final/blob/dev/Pictures/quotation_final.png)
 
 - *Descripción*: En la página del carrito de compras, el usuario puede finalizar la cotización. Esto lo redirige a una última página donde puede imprimir la cotización o contactar a un asesor mediante WhatsApp. Al presionar el link enviado por WhatsApp, el usuario puede ver la cotización sin posibilidad de edición.
 
@@ -100,7 +100,7 @@ Tras la autenticación exitosa, el administrador es redirigido a una página pri
 
 ### A. Modelo E-R (Entidad-Relación)
 
-![alt text](Pictures\ModeloER.png)
+![alt text](https://github.com/Richi025/cvds-2024-I-prj-final/blob/dev/Pictures/ModeloER.png)
 
 #### Descripción del Modelo E-R
 
@@ -108,13 +108,13 @@ El modelo Entidad-Relación (E-R) describe la estructura lógica de la base de d
 
 ### B. Diagrama de Clases (Generado mediante Ingeniería Inversa)
 
-![alt text](Pictures\DiagramPaquets.png)
+![alt text](https://github.com/Richi025/cvds-2024-I-prj-final/blob/dev/Pictures/DiagramPaquets.png)
 
-![alt text](Pictures\DiagramClassController.png)
+![alt text](https://github.com/Richi025/cvds-2024-I-prj-final/blob/dev/Pictures/DiagramClassController.png)
 
-![alt text](Pictures\DiagramModel.png)
+![alt text](https://github.com/Richi025/cvds-2024-I-prj-final/blob/dev/Pictures/DiagramModel.png)
 
-![alt text](Pictures\DiagramRepository.png)
+![alt text](https://github.com/Richi025/cvds-2024-I-prj-final/blob/dev/Pictures/DiagramRepository.png)
 
 #### Descripción del Proceso
 
@@ -229,25 +229,25 @@ Este ciclo se repite hasta que el producto se completa o se decide finalizar el 
 
 ### 2. Reporte de Pruebas y Cobertura
 
-![Sprints Reporte de Pruebas](Pictures\imageTests1.png)
+![Sprints Reporte de Pruebas](https://github.com/Richi025/cvds-2024-I-prj-final/blob/dev/Pictures/imageTests1.png)
 
-![Sprints Reporte de Pruebas](Pictures\imageTests.png)
+![Sprints Reporte de Pruebas](https://github.com/Richi025/cvds-2024-I-prj-final/blob/dev/Pictures/imageTests.png)
 
 ### 3. Backlog por Sprint
 
-![Backlog](Pictures\image0.png)
+![Backlog](https://github.com/Richi025/cvds-2024-I-prj-final/blob/dev/Pictures/image0.png)
 
 #### A. Sprint 1
 
-![Sprint 1 Backlog](Pictures\image.png)
+![Sprint 1 Backlog](https://github.com/Richi025/cvds-2024-I-prj-final/blob/dev/Pictures/image.png)
 
 #### B. Sprint 2
 
-![Sprint 2 Backlog](Pictures\image2.png)
+![Sprint 2 Backlog](https://github.com/Richi025/cvds-2024-I-prj-final/blob/dev/Pictures/image2.png)
 
 #### C. Sprint 3
 
-![Sprint 3 Backlog](Pictures\image3.png)
+![Sprint 3 Backlog](https://github.com/Richi025/cvds-2024-I-prj-final/blob/dev/Pictures/image3.png)
 
 
 
