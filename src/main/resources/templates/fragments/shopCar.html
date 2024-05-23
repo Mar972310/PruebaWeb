@@ -64,14 +64,17 @@
                    
                 </div>
                 <div class="actions">
+                    <p> Subtotal</p>
+                    <h2><pan>$</span><span th:text="${quote.price}"></span></h2>
                     <div class="accioness">
+                        
                         <button type="button" onclick="view()">Ver cotización</button>
                         <button type="button" >Agendar cita</button>
                     </div>
                     <div class="whats">
                         <img src="/images/whatsapp.png" onclick="whatsApp()">
                     </div>  
-                    <p th:text="${quote.price}"></p>
+                    
                 </div>
             </div>
         </div>

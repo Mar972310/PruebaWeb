@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalles de la cotización</title>
-    <link rel="stylesheet" href="/style/styleDetailsQuotes.css">
+    <link rel="stylesheet" href="/style/styleUpdatesQuote.css">
 </head>
 <body>
     <div class="exit">
@@ -22,10 +22,20 @@
         <h1>Detalles de la cotización <span th:text="${quote.id}"></span></h1>
         <div class="information">
             <div class="general_information">
-
-                <label for="estate" class="labels_update">Estado de la cotización</label>
-                <input type="text" th:value="*{estate}" class="text_details" id="estate" name="estate"  readonly required>
-
+                
+                    <form action="#" th:action="@{/api/quote/update/{quoteId}(quoteId=${quote.id})}" method="post">
+                        <label for="estate" class="labels_update">Estado de la cotización</label>
+                        <select class="labels_update" id="estate" name="estate" required>
+                            <option value="" disabled selected>-- Seleccione un estado--</option>
+                            <option value="Creado">Creado</option>
+                            <option value="En proceso">En proceso</option>
+                            <option value="Finalizado">Finalizado</option>
+                        </select>
+                        <button type="submit" class="r">Finalizar</button>
+                    </form>
+           
+                
+                    
                 <label for="price" class="labels_update">Valor de la cotización</label>
                 <input type="text" th:value="*{price}" class="text_details" id="price" name="price"  readonly required>
 
@@ -55,10 +65,11 @@
                 <div class="image_car">
                     <img th:src="${vehicle.image}">
                 </div>
+                
 
 
             </div>
-                
+           
             <div class="products_quote">
                 <h2>Productos y servicios</h2>
                 <div th:if="${!#lists.isEmpty(productsSelect)}" class="productss">
@@ -92,17 +103,17 @@
                     </div>
  
                 </div>
-                <div class="right">
-                    <button  th:attr="onclick='window.location.href=\'/api/quote/update/' + ${quote.id} + '\''"  method="GET">Editar</button>
-                </div>
+               
             </div>
         </div>
     </div>
     <script>
         function volver() {
         // Redirige a la página especificada al hacer clic en la imagen
-        window.location.href = "/api/quote/admistrator/listQuote";
+        window.location.href = "/api/quote//admistrator/listQuote";
         }
     </script>
+    
 </body>
 </html>
+

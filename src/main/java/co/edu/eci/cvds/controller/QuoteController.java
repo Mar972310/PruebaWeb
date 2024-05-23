@@ -4,6 +4,7 @@ package co.edu.eci.cvds.controller;
 import co.edu.eci.cvds.model.Quote;
 import co.edu.eci.cvds.model.Vehicle;
 import co.edu.eci.cvds.model.Product;
+import co.edu.eci.cvds.model.Brand;
 import co.edu.eci.cvds.model.Category;
 import co.edu.eci.cvds.service.CategoryService;
 import co.edu.eci.cvds.service.ProductService;
@@ -117,12 +118,36 @@ public class QuoteController {
         return "fragments/shopCar :: grid-container";
     }
 
-    
-
     @PostMapping("/update/{quoteId}")
-    public void stateUpdate(@PathVariable String quoteId, Model model) {
-        quoteService.endQuote(quoteId);
+public String stateUpdate(@PathVariable String quoteId, @RequestParam("estate") String estate, Model model) {
+    quoteService.endQuote(quoteId, estate);
+    model.addAttribute("message", "Estado de la cotización actualizado exitosamente");
+    return "redirect:/api/quote/admistrator/listQuote";
+}
+
+
+    @GetMapping("/view_edit/{quoteId}")
+    public String viewPQuote(@PathVariable String quoteId, Model model){
+        Quote quote = quoteService.getQuote(quoteId);
+        List<Product> products = quote.getProducts();
+        Vehicle vehicle = quote.getVehicle();
+        model.addAttribute("productsSelect", products);
+        model.addAttribute("quote",quote);
+        model.addAttribute("vehicle",vehicle);
+        return "detailsQuotes";
     }
+
+    @GetMapping("/update/{quoteId}")
+    public String updateQuote(@PathVariable String quoteId,Model model) {
+        Quote quote = quoteService.getQuote(quoteId);
+        List<Product> products = quote.getProducts();
+        Vehicle vehicle = quote.getVehicle();
+        model.addAttribute("productsSelect", products);
+        model.addAttribute("quote",quote);
+        model.addAttribute("vehicle",vehicle);
+        return "updatesQuotes";
+    }
+
 
 
 }

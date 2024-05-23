@@ -46,9 +46,9 @@ public class QuoteService {
         return quote;
     }
 
-    public Quote endQuote(String quoteId){
+    public Quote endQuote(String quoteId, String estate){
         Quote quote = getQuote(quoteId);
-        quote.setEstate("En proceso");
+        quote.setEstate(estate);
         return quoteRepository.save(quote);
     }
 

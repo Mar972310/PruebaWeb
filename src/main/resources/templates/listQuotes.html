@@ -39,8 +39,8 @@
                             <td>
                                 <div class="Acciones" >
                                     
-                                    <img src="/images/lupa.png">
-                                    <img src="/images/configuraciones.png">
+                                    <img src="/images/lupa.png" th:attr="onclick='window.location.href=\'/api/quote/view_edit/' + ${quote.id} + '\''"  method="GET" >
+                                    <img src="/images/configuraciones.png" th:attr="onclick='window.location.href=\'/api/quote/update/' + ${quote.id} + '\''"  method="GET">
                                 </div>
                             </td>
                         </tr>
@@ -49,7 +49,12 @@
             </section>
         </main>
         <div class="button">
-            <button>Regresar</button>
+            <button onclick="volver()">Regresar</button>
         </div>
+        <script>
+            function volver() {
+                window.location.href = '/html/functionAdmin.html';
+            }
+        </script>
     </body>
 </html>

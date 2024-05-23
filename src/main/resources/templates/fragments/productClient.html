@@ -17,14 +17,15 @@
                             <div class="details-">
                                 <h4>Descripción: </h4>
                                 <p th:text="${product.description}"></p>
-                                <h4>Descripción técnica: </h4>
-                                <p th:text="${product.technicalDescription}"></p>
                             </div>
                            
                         </div>
                     </div>
                     <div class="textInformation">
-                        <p th:text="${product.name}"></p>
+                        <div class="ifo">
+                            <p th:text="${product.name}"></p>
+                        </div>
+                        
                         <div class="information">
                             <div class="information_text">
                                 <h4>Desde</h4>
