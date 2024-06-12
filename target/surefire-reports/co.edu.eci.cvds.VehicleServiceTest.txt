@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: co.edu.eci.cvds.VehicleServiceTest
 -------------------------------------------------------------------------------
-Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.371 s -- in co.edu.eci.cvds.VehicleServiceTest
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.128 s -- in co.edu.eci.cvds.VehicleServiceTest

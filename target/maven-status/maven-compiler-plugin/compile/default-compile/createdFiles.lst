@@ -25,6 +25,8 @@ co/edu/eci/cvds/controller/BrandController.class
 co/edu/eci/cvds/service/BrandService.class
 co/edu/eci/cvds/repository/BrandRepository.class
 co/edu/eci/cvds/model/Category.class
+co/edu/eci/cvds/SpringApplicationCvds$Myconfiguration$1.class
+co/edu/eci/cvds/SpringApplicationCvds$Myconfiguration.class
 co/edu/eci/cvds/controller/QuoteController.class
 co/edu/eci/cvds/controller/VehicleController$VehiculoController.class
 co/edu/eci/cvds/repository/QuoteRepository.class
