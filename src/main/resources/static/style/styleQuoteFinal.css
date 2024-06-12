@@ -1,0 +1,347 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Jost', sans-serif;
+    flex-direction: column;
+    background: #0D131A; 
+}
+
+header {
+    display: flex;
+
+    background: #000;;
+    color: #fff;
+    width: 100%;
+    height: 6.5vw; 
+    position: fixed; 
+    top: 0; 
+    z-index: 1000; 
+    justify-content: center;
+    align-items: center;
+}
+
+.left-column, .right-column {
+    padding: -2px; 
+}
+
+.exit {
+    margin-right: auto; 
+}
+
+.left-column img{
+    max-width: 10%; 
+    height: 3vw; 
+    margin-left: 5%; /* Desplazamiento hacia la izquierda */
+}
+.right-column img{
+    width: 20vw;
+    height:6vw; 
+}
+
+button {
+    width: 100%; 
+    max-width: 200px;
+    height: 50px;
+    margin: 0px 6%;
+    background: #FFCF28;
+    color: #fff;
+    font-size: 1em;
+    font-weight: bold;
+    outline: none;
+    border: 2px solid #00000000;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .2s ease-in;
+    flex-wrap: wrap;
+}
+button:hover{
+    background: #D91F28;
+    scale: 1.3;
+    box-shadow:#ffd028;
+}
+
+.conteiner{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    align-content: flex-start;
+    width: 90vw;
+    height: 45vw;
+    margin-top: 7vw;
+    background-color: #E3E6EC;
+    flex-direction: column;
+    border-radius: 2vw;
+    gap: 1vw;
+}
+
+.information{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+
+}
+
+.general_information{
+    justify-content: flex-start;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+    width: 45%;
+    height: 100%;
+
+}
+
+.products_quote{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+    width: 45%;
+    height: 90%;
+    top:7px;
+}
+
+.lines {
+    border-top: 1px solid #ccc; /* Estilo para la línea */
+    width: 100%; /* Ancho completo de la línea */
+    margin: 10px 0;
+}
+
+.productss{
+    height: 89vh;
+    width: 27vw;
+    margin-top: 11.5vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.informationPro{
+    height: 55vh;
+    overflow-y: auto; 
+    overflow-x: hidden; 
+    top: 40vh;
+    position: absolute;
+}
+
+.prices{
+    height: 12vh;
+    width: 12vw;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.textName{
+    height: 12vh;
+    width: 11vw;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: flex-start;
+    font-size:2.5vh;
+}
+
+.imageP {
+    height: 10vh;
+    width: 10vh;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.imageP img{
+    height: 9.5vh;
+    width: 9.5vh;
+    border-radius: 50%;
+    border-color: #FFCF28;
+ 
+    
+}
+
+.productSelect{
+    height: 12vh;
+    width: 26vw;
+    padding: 1vh;
+    display: flex;
+    gap: 5px;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+    font-size: 1em;
+}
+
+.old-prices {
+    font-size: 2.5vh;
+    width: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: flex-start;
+}
+
+.new-prices {
+    font-size: 3vh;
+    width: 100%;
+    justify-content: flex-start;
+
+}
+.current-prices {
+    font-size: 3vh;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.labels_update {
+    color: #333;
+    margin-bottom: 5px;
+    width: 90%;
+
+}
+
+
+.general_information h2{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.products_quote h2{
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.text_details {
+    height: 37px;
+    font-size: 16px;
+    width: 90%;
+    margin-bottom: 5px;
+    padding: 2px;
+    border-radius: 10px;
+    background-color: #E3E6EC;
+}
+
+.part1{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-direction: row;
+    width: 90%;
+    margin-top: 20px;
+}
+
+.part2{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-direction: row;
+    width: 90%;
+    margin-top: 20px;
+}
+
+.j{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-direction: row;
+    width: 70vw;
+
+    margin-left: 6px;
+}
+.products_quote {
+    display: flex; 
+    /*flex-wrap: wrap; /* Permite que los elementos se envuelvan */
+    justify-content: center; 
+    align-items: center;
+    flex-direction: column;
+    gap: 10px; 
+    padding: 10px;
+    max-width: 80%; /* Establecer un ancho máximo para el contenedor */
+    margin-top: 0px;
+    height: 68vh;
+
+}
+
+.info{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-direction: row;
+    width: 36vw;
+    margin-right: 20px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 50%)); /* Máximo de 5 columnas por fila */
+    gap: 20px; /* Aumentar el espacio entre los contenedores */
+    padding: 20px; /* Añadir espacio alrededor de la grilla */
+    border-radius: 15px; /* Redondear los bordes de la cuadrícula */
+     /* Color de fondo de la cuadrícula */
+    background-color: #0D131A;
+    overflow-y: auto;
+    width: 80%;
+    height: 80%;
+}
+
+.img_product {
+    text-align: center;
+    background-color: #E3E6EC; /* Color de fondo de la imagen */
+    padding: 10px; /* Añadir espacio alrededor de la imagen */
+    border-radius: 15px;
+    max-width: 100%; /* Hacer que la imagen ocupe todo el ancho */
+    height: 50%; /* Ajustar la altura automáticamente */
+    margin-bottom: 10px; /* Eliminar el margen inferior */
+}
+
+.img_product img {
+    max-width: 100%;
+    height: 100%;
+}
+
+.textInformation {
+    text-align: left;
+    background-color: transparent; /* Color de fondo del texto */
+    padding: 10px; /* Añadir espacio alrededor del texto */
+    color:#0D131A;
+    border-radius: 15px;
+    margin-top: 0px; 
+}
+
+.information_text {
+    display: flex; /* Hace que el contenedor sea un contenedor flex */
+    justify-content: flex-start; /* Alinea el contenido al inicio horizontalmente */
+    align-items: center; /* Centra verticalmente el contenido */
+    flex-direction: column; /* Coloca los elementos uno debajo del otro */
+    width: 35%;
+}
+
+.image_car{
+    height: 10vw;
+    width: 15vw;
+}
+
+.image_car img{
+    height: 100%;
+    width: 100%;
+}

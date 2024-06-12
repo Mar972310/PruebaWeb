@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Cotizaciones</title>
+    <link rel="stylesheet"  href="/style/styleListQuotes.css">
+</head>
+    <body>
+        <div class="exit">
+            <header>
+                <div class="left-column">
+                    <img src="/images/image.png">
+                </div>
+                <div class="right-column">
+                    <img src="/images/LogoApp.jpeg">
+                </div>
+            </header>
+        </div>
+        <div class="main">
+            <h1>Listado de cotizaciones</h1>
+        </div>
+        <main class="table" id="customers_table">
+            <section class="table__body">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Id de cotización</th>
+                            <th>Estado</th>
+                            <th>Valor</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="quote, rowStat : ${quotes}" th:class="${rowStat.odd} ? 'odd' : ''">
+                            <td th:text="${quote.id}"></td>
+                            <td th:text="${quote.estate}"></td>
+                            <td th:text="${quote.price}"></td>
+                            <td>
+                                <div class="Acciones" >
+                                    
+                                    <img src="/images/lupa.png" th:attr="onclick='window.location.href=\'/api/quote/view_edit/' + ${quote.id} + '\''"  method="GET" >
+                                    <img src="/images/configuraciones.png" th:attr="onclick='window.location.href=\'/api/quote/update/' + ${quote.id} + '\''"  method="GET">
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+        <div class="button">
+            <button onclick="volver()">Regresar</button>
+        </div>
+        <script>
+            function volver() {
+                window.location.href = '/html/functionAdmin.html';
+            }
+        </script>
+    </body>
+</html>

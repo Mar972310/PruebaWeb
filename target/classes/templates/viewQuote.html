@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de la cotización</title>
+    <link rel="stylesheet" href="/style/styleQuoteFinal.css">
+</head>
+<body>
+    <div class="exit">
+        <header>
+            
+            <div class="right-column">
+                <img src="/images/LogoApp.jpeg">
+            </div>
+        </header>
+    </div>
+
+    <div class="conteiner" th:object="${quote}">
+        <h1>Resumen de la cotización</h1>
+        <div class="information">
+            <div class="general_information">
+
+    
+
+                <h2>Información del vehículo</h2>
+
+                <div class="part1">
+                    
+                        <label for="brand" class="labels_update">Marca del vehículo</label>
+                    <div class="info">
+                        <input type="text" th:value="${vehicle.brand.name}" class="text_details" id="brand" name="brand"  readonly required>
+                    </div>
+                    
+                    <label for="model" class="labels_update">Modelo del vehículo</label>
+                    <input type="text" th:value="${vehicle.model}" class="text_details" id="model" name="model"  readonly required>
+                </div>
+                <div class="part2">
+                    <label for="year" class="labels_update">Año del vehículo</label>
+                    <div class="info">
+                        <input type="text" th:value="${vehicle.year}" class="text_details" id="year" name="year"  readonly required>
+                    </div>
+
+                    <div class="j" th:if="${quote.vehicle.cylinderCapacity != null}">
+                        <label for="cylinderCapacity" class="labels_update">Cilindraje del vehículo</label>
+                        <input type="text" th:value="${vehicle.cylinderCapacity}" class="text_details" id="cylinderCapacity" name="cylinderCapacity" readonly required>
+                    </div>
+                </div>
+                <div class="image_car">
+                    <img th:src="${vehicle.image}">
+                </div>
+                <label for="price" class="labels_update">Valor de la cotización</label>
+                <input type="text" th:value="*{price}" class="text_details" id="price" name="price"  readonly required>
+
+
+            </div>
+                
+            <div class="products_quote">
+                <h2>Productos y servicios</h2>
+                <div th:if="${!#lists.isEmpty(productsSelect)}" class="productss">
+                <!-- Iterar sobre los productos y mostrar cada uno -->
+                    <div  class="informationPro" >
+                        <div  th:each="product : ${productsSelect}">
+                            <div class="productSelect">
+                                <div class="imageP">
+                                    <img th:if="${product.image}" th:src="@{'/uploads/' + ${product.image}}" /> 
+                                </div>
+                                <div class="textName">
+                                    <p th:text="${product.name}"/>
+                                </div>
+                                
+                                <div class="prices">
+                                    <div class="new-prices" th:if="${product.discount > 0}">
+                                        <span>$</span><span th:text="${product.price - (product.price * product.discount / 100)}"></span>
+                                    </div>
+                                    <div class="current-prices" th:unless="${product.discount > 0}">
+                                        <span>$</span><span th:text="${product.price}"></span>
+                                    </div>
+                                    <div class="old-prices" th:if="${product.discount > 0}">
+                                        <s><span>$</span><span th:text="${product.price}"></span></s>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="lines"></div>
+                        </div>
+                       
+                    </div>
+ 
+                </div>
+                
+            </div>
+            
+        </div>
+        
+    </div>
+    <script>
+        function volver() {
+        // Redirige a la página especificada al hacer clic en la imagen
+        window.location.href = "/api/quote/admistrator/listQuote";
+        }
+    </script>
+</body>
+</html>

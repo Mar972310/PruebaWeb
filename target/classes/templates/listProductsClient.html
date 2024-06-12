@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<<head>
+    <meta charset="UTF-8">
+    <title>productos</title>
+
+    <link rel="stylesheet" href="/style/styleListProductsClient.css">
+    <script src="https://kit.fontawesome.com/8df01ba1bf.js" crossorigin="anonymous"></script>
+</head>
+<body>
+        <div class="exit">
+            <header>
+                <div class="left-column">
+                    <img src="/images/cerrar-sesion.png" onclick="volver()">
+                </div>
+                <div class="center-column">
+                    <img src="/images/LogoApp.jpeg">
+                </div>
+
+                <div class="right-column" th:attr="data-quote-id=${quote.id}" >
+                    <img src="/images/verificar-2.png" onclick="toggleSidebar()">
+                </div>
+               
+            </header>
+        </div>
+
+        <div class="jij">
+            <div class="top">
+                <div class="category">
+                    <button class="img_button scroll-left-button" type="button" method="get">
+                        <img src="/images/flecha-izquierda.png">
+                    </button>
+                    <div class="grid-button">
+                        <div th:each="category: ${categories}" >
+                            <button class="buttonCategory" th:attr="data-category-id=${category.categoryId}" type="button">
+                                <span th:text="${category.name}"></span>
+                            </button>
+                        </div>
+                    </div>
+                    <button class="img_button scroll-right-button" type="button" method="get">
+                        <img src="/images/flecha-correcta.png">
+                    </button>
+                </div>
+                <div class="search">
+                    <div class="buscar">
+                        <input type="text" placeholder="Buscar" required />
+                        <div class="btn">
+                          <i class="imgSearch">
+                            <img src="/images/search.png">
+                          </i>
+                        </div>
+                      </div>
+                </div>
+    
+            </div>
+                
+    
+            <div class="products" th:include="fragments/productClient :: grid-container">
+            </div>
+
+            <div id="sidebar" class="sidebar" th:include="fragments/shopCar :: grid-container" >
+            </div>
+        </div>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script>
+            function volver() {
+                // Redirige a la página especificada al hacer clic en la imagen
+                window.location.href = '/api/user';
+            }
+            function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const jij = document.querySelector('.jij');
+            
+            sidebar.classList.toggle('active');
+            jij.classList.toggle('shift-left');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('.scroll-left-button').addEventListener('click', function() {
+                document.querySelector('.grid-button').scrollBy({
+                    left: -100,
+                    behavior: 'smooth'
+                });
+            });
+
+            document.querySelector('.scroll-right-button').addEventListener('click', function() {
+                document.querySelector('.grid-button').scrollBy({
+                    left: 100,
+                    behavior: 'smooth'
+                });
+            });
+
+            document.querySelectorAll('.grid-button button').forEach(button => {
+                button.addEventListener('click', function() {
+                    document.querySelectorAll('.grid-button button').forEach(btn => btn.classList.remove('active-button'));
+                    this.classList.add('active-button');
+                });
+            });
+
+            document.querySelectorAll('.buttonCategory').forEach(button => {
+                button.addEventListener('click', function() {
+                    const categoryId = this.getAttribute('data-category-id');
+                    fetch(`/api/quote/${categoryId}`)
+                        .then(response => response.text())
+                        .then(data => {
+                            document.querySelector('.products').innerHTML = data;
+                        })
+                        .catch(() => {
+                            alert('Error al actualizar los elementos');
+                        });
+                });
+            });
+            
+            $(document).ready(function(){
+            
+            $('.products').on('click', '.agregar', function(){
+                var productId = $(this).data('product-id'); 
+                var quoteId = $('.right-column').data('quote-id');
+                console.log(quoteId);
+                    $.ajax({
+                        url: '/api/quote/update/'+quoteId+'/' + productId,
+                        method: 'POST',
+                        success: function(data) {
+                     // Verifica qué contiene data
+                            $('.sidebar').empty().html(data);
+                        },
+                        error: function() {
+                            console.log('Error al realizar la solicitud AJAX.');
+                            alert('Error al actualizar los elementos');
+                        }
+                    });
+                });
+            });
+        });
+
+        $(document).ready(function(){
+            $('.sidebar').on('click', '.delete', function(){
+                    var productId = $(this).data('product-id'); 
+                    var quoteId = $('.right-column').data('quote-id');
+                    $.ajax({
+                        url: '/api/quote/delete/' + quoteId + '/' + productId,
+                        method: 'DELETE',
+                        success: function(data) {
+                            $('.sidebar').empty().html(data);
+                        },
+                        error: function() {
+                            alert('Error al actualizar los productos del carrito');
+                        }
+                    });
+                });
+            });
+        
+
+        function view() {
+            var quoteId = $('.right-column').data('quote-id');
+            window.location.href = '/api/quote/viewFinal/'+quoteId;
+        }
+
+        function date() {
+            var quoteId = $('.right-column').data('quote-id');
+            window.location.href = '/html/SheduleDate.html';
+        }
+
+        function whatsApp() {
+            var quoteId = $('.right-column').data('quote-id');
+            window.location.href = 'https://api.whatsapp.com/send/?phone=573229118752&text=Hola+%2ATopGear+Bogot%C3%A1%2A.+Necesito+que+me+ayuden+con+esta+cotizaci%C3%B3n.%0Ahttp://localhost:8080/api/quote/viewFinal/'+quoteId;
+        }
+        
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    </body>
+</html>

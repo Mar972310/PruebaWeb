@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style/styles.css">
+</head>
+<body>
+    <div class="card"  th:each="product: ${products}>
+        <div class="face front"">
+            <div class="img_product">
+                <img th:if="${product.image}" th:src="@{'/uploads/'+ ${product.image}}" />
+            </div>
+            <div class="textInformation">
+                <h3 th:text="${product.name}"></h3>                          
+                <div class="information">
+                    <div class="information_text">
+                        <h4>Desde</h4>
+                        <div class="new-price" th:if="${product.discount > 0}">
+                            <span>$</span><span th:text="${product.price - (product.price * product.discount / 100)}"></span>
+                        </div>
+                        <div class="current-price" th:unless="${product.discount > 0}">
+                            <span>$</span><span th:text="${product.price}"></span>
+                        </div>
+                        <div class="old-price" th:if="${product.discount > 0}">
+                            <s><span>$</span><span th:text="${product.price}"></span></s>
+                        </div>
+                        <div class="old-price" th:if="${product.discount < 1}">
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="acciones" name="${product.productId}" name="${quote.quoteId}">
+                        <button class="img_button "  th:attr="onclick='window.location.href=\'/api/products/update/' + ${quote.quoteId} +${product.productId} + '\''" type="button" method="get">
+                            <img src="/images/anadir.png">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="face back">
+            <h3>Japan</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius harum molestiae iste, nihil doloribus fugiat distinctio ducimus maxime totam nulla fuga odio non aperiam eos?</p>
+            <div class="link">
+                <a href="#">Details</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de productos</title>
+    <link rel="stylesheet" href="/style/styleListProducts.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+    <body>
+
+        <h1>Listado de productos</h1>
+        <div class="exit">
+            <header>
+                <div class="left-column">
+                    <img src="/images/cerrar-sesion.png" onclick="volver()">
+                </div>
+                <div class="right-column">
+                    <img src="/images/LogoApp.jpeg">
+                </div>
+            </header>
+        </div>
+        <div class="products" th:include="fragments/productsAdmin :: grid-container">
+        </div>
+        <footer>
+            <img src="/images/agregar-producto.png" onclick="crear()">
+        </footer>
+
+        <script>
+            function volver() {
+                window.location.href = '/html/functionAdmin.html';
+            }
+
+            function crear() {
+                window.location.href = '/api/products/create';
+            }
+
+            
+            $(document).ready(function(){
+            // Delegar el evento de clic en el contenedor padre
+            $('.products').on('click', '.delete-btn', function(){
+                var productId = $(this).data('product-id'); // Obtener el ID del producto
+                // Confirmar la eliminación (opcional)
+                if (confirm('¿Estás seguro de eliminar este producto?')) {
+                    $.ajax({
+                        url: '/api/products/delete/' + productId,
+                        method: 'DELETE',
+                        success: function(data) {
+                            $('.products').empty().html(data);
+                        },
+                        error: function() {
+                            console.log('Error al realizar la solicitud AJAX.');
+                            alert('Error al actualizar los elementos');
+                        }
+                    });
+                }
+            });
+        });
+            
+            
+        </script>
+    </body>
+</html>

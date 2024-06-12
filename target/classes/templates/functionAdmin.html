@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/style/styleFunctionsAdmin.css">
+        
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="exit">
+            <header>
+                <div class="left-column">
+                    <img src="/images/cerrar-sesion.png" onclick="volver()">
+                </div>
+                <div class="right-column">
+                    <img src="/images/LogoApp.jpeg">
+                </div>
+            </header>
+        </div>
+        <div class="main">
+            <h1>Bienvenido administrador</h1>
+            <div class="funtion">
+                <div class="funtionsAdmin">
+                    <div class="imagen">
+                        <img src="/images/lista-de-verificacion.png">
+                    </div>
+                    <div class="button">
+                        <button onclick="listQuotes()">Lista de cotizaciones</button>
+                    </div>
+                    
+                </div>
+                <div class="funtionsAdmin">
+                    <div class="imagen">
+                        <img src="/images/AdministracionProductos.png">
+                    </div>
+                    
+                    <div class="button">
+                        <button onclick="listProducts()">Administración de productos</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            function listProducts() {
+                // Redirige a la página especificada al hacer clic en la imagen
+                window.location.href = "/api/products";
+            }
+            function listQuotes() {
+                // Redirige a la página especificada al hacer clic en la imagen
+                window.location.href = "/html/listQuotes.html";
+            }
+            function volver() {
+                // Redirige a la página especificada al hacer clic en la imagen
+                window.location.href = "/html/Login.html";
+            }
+        </script>
+    </body>
+</html>
